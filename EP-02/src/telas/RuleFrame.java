@@ -12,12 +12,13 @@ package telas;
 public class RuleFrame extends javax.swing.JFrame {
 
     
-    private MainFrame prevousScreen;
-    
+  
     
     public RuleFrame() {
         initComponents();
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +35,11 @@ public class RuleFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         playButton.setText("Agree");
         playButton.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +76,11 @@ public class RuleFrame extends javax.swing.JFrame {
         new ProfileFrame().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_playButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        
+        
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
