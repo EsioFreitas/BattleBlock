@@ -5,6 +5,8 @@
  */
 package telas;
 
+import sun.applet.Main;
+
 /**
  *
  * @author esio
@@ -16,6 +18,10 @@ public class RuleFrame extends javax.swing.JFrame {
     
     public RuleFrame() {
         initComponents();
+    }
+     private MainFrame y;
+
+    public RuleFrame(MainFrame y) {
     }
     
    
@@ -74,12 +80,12 @@ public class RuleFrame extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         new ProfileFrame().setVisible(true);
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        
-        
+        new MainFrame().setVisible(true);
+        dispose();   
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**

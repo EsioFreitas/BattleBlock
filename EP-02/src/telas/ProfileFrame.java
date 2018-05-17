@@ -118,7 +118,8 @@ public class ProfileFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_classesPersonagensActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
+        new RuleFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed

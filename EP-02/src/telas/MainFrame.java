@@ -84,7 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void rankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankButtonActionPerformed
         new RankFrame().setVisible(true);
-        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_rankButtonActionPerformed
 
     private void extirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extirButtonActionPerformed
@@ -93,7 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         new RuleFrame().setVisible(true);
-        this.setVisible(false);
+        dispose();
 
     }//GEN-LAST:event_playButtonActionPerformed
 
