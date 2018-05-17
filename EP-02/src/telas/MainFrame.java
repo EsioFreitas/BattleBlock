@@ -87,11 +87,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rankButtonActionPerformed
 
     private void extirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extirButtonActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_extirButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        // TODO add your handling code here:
+        new RuleFrame().setVisible(true);
     }//GEN-LAST:event_playButtonActionPerformed
 
     /**
