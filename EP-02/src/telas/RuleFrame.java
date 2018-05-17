@@ -11,9 +11,10 @@ package telas;
  */
 public class RuleFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RuleFrame
-     */
+    
+    private MainFrame prevousScreen;
+    
+    
     public RuleFrame() {
         initComponents();
     }
@@ -66,7 +67,8 @@ public class RuleFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        // TODO add your handling code here:
+        new ProfileFrame().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_playButtonActionPerformed
 
     /**
