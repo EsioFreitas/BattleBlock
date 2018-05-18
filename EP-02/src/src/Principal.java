@@ -1,12 +1,15 @@
 
-package ep.pkg02;
+package src;
 
-import telas.MainFrame;
+import screen.MainFrame;
+
 
 public class Principal {
 
     public static void main(String[] args) {
+        
         new MainFrame().setVisible(true);
+        
     }
     
 }
