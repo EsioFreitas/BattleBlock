@@ -1,7 +1,5 @@
 package screen;
 
-import sun.applet.Main;
-
 public class RuleFrame extends javax.swing.JFrame {
   
     public RuleFrame() {
