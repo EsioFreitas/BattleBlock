@@ -16,9 +16,10 @@ public class ProfileFrame extends javax.swing.JFrame {
         nickname = new javax.swing.JLabel();
         javax.swing.JTextField nicknameField = new javax.swing.JTextField();
         javax.swing.JComboBox<String> classesPersonagens = new javax.swing.JComboBox<>();
-        tiposCampos = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        battleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,14 +31,12 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
 
-        classesPersonagens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senju", "Uchiha ", "Hyuuga" }));
+        classesPersonagens.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Uzumaki", "Haruno", "Uchiha" }));
         classesPersonagens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classesPersonagensActionPerformed(evt);
             }
         });
-
-        tiposCampos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +52,15 @@ public class ProfileFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Class");
+
+        battleButton.setText("Battle field");
+        battleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                battleButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,15 +72,18 @@ public class ProfileFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nickname)
                             .addComponent(nicknameField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tiposCampos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(classesPersonagens, javax.swing.GroupLayout.Alignment.LEADING, 0, 150, Short.MAX_VALUE)))
+                            .addComponent(classesPersonagens, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
                         .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(battleButton)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,11 +92,13 @@ public class ProfileFrame extends javax.swing.JFrame {
                 .addComponent(nickname)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nicknameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(classesPersonagens, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
-                .addComponent(tiposCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(battleButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(playButton))
@@ -109,8 +122,14 @@ public class ProfileFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new GameFrame().setVisible(true);
     }//GEN-LAST:event_playButtonActionPerformed
+
+    private void battleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_battleButtonActionPerformed
+        new BatlleFrame().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_battleButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -146,8 +165,9 @@ public class ProfileFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton battleButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nickname;
     private javax.swing.JButton playButton;
-    private javax.swing.JComboBox<String> tiposCampos;
     // End of variables declaration//GEN-END:variables
 }

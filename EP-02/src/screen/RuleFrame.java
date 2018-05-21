@@ -10,15 +10,15 @@ public class RuleFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backButton = new javax.swing.JButton();
+        disagreeButton = new javax.swing.JButton();
         playButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        disagreeButton.setText("Disagree");
+        disagreeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                disagreeButtonActionPerformed(evt);
             }
         });
 
@@ -35,7 +35,7 @@ public class RuleFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(disagreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addComponent(playButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -45,7 +45,7 @@ public class RuleFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(339, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
+                    .addComponent(disagreeButton)
                     .addComponent(playButton))
                 .addGap(32, 32, 32))
         );
@@ -58,10 +58,10 @@ public class RuleFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void disagreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disagreeButtonActionPerformed
         new MainFrame().setVisible(true);
         dispose();   
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_disagreeButtonActionPerformed
 
     
     public static void main(String args[]) {
@@ -73,7 +73,7 @@ public class RuleFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton disagreeButton;
     private javax.swing.JButton playButton;
     // End of variables declaration//GEN-END:variables
 }
