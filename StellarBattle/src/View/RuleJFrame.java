@@ -91,7 +91,7 @@ public class RuleJFrame extends javax.swing.JFrame {
     private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
            try{
             JFileChooser fc = new JFileChooser();
-            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            //fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fc.showOpenDialog(this);
 
             File map = fc.getSelectedFile();

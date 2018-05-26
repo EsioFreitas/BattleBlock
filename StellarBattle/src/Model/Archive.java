@@ -8,16 +8,16 @@ import java.util.Scanner;
 
 public class Archive {
     
-    private int width = 0;
-    private int height = 0;
+    private int arcWidth;
+    private int arcHeight;
     
-    private int[][] matriz = new int[width][height];
+    private int[][] arcMatriz = new int[arcWidth][arcHeight];
         
-    private int firstSpacecraft;
-    private int secondSpacecraft;
-    private int thirdSpacecraft;
-    private int fourthSpacecraft;
-    private int fivethtSpacecraft;
+    private int arcFirstSpacecraft;
+    private int arcSecondSpacecraft;
+    private int arcThirdSpacecraft;
+    private int arcFourthSpacecraft;
+    private int arcFivethtSpacecraft;
     
     private int var;
     
@@ -35,9 +35,11 @@ public class Archive {
                 
                 String[] content = row.split(" ");
                 var = Integer.parseInt(content[0]);
-                board.setWidth(var);
+                this.setArcWidth(var);
                 var = Integer.parseInt(content[1]);
-                board.setHeight(var);
+                this.setArcHeight(var);
+                
+                System.out.println(getArcWidth());
                 
             } else if(row.contains("# matri")){
                 
@@ -56,82 +58,94 @@ public class Archive {
                     
                 }
                 
+            }else if(row.contains("\n")){
+                continue;
             }
             
             
         }
         
     }
-    
-    
-    
 
-    public int getWidth() {
-        return width;
+    public int getArcWidth() {
+        return arcWidth;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public void setArcWidth(int arcWidth) {
+        this.arcWidth = arcWidth;
     }
 
-    public int getHeight() {
-        return height;
+    public int getArcHeight() {
+        return arcHeight;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setArcHeight(int arcHeight) {
+        this.arcHeight = arcHeight;
     }
 
-    public int[][] getMatriz() {
-        return matriz;
+    public int[][] getArcMatriz() {
+        return arcMatriz;
     }
 
-    public void setMatriz(int[][] matriz) {
-        this.matriz = matriz;
+    public void setArcMatriz(int[][] arcMatriz) {
+        this.arcMatriz = arcMatriz;
     }
 
-    public int getFirstSpacecraft() {
-        return firstSpacecraft;
+    public int getArcFirstSpacecraft() {
+        return arcFirstSpacecraft;
     }
 
-    public void setFirstSpacecraft(int firstSpacecraft) {
-        this.firstSpacecraft = firstSpacecraft;
+    public void setArcFirstSpacecraft(int arcFirstSpacecraft) {
+        this.arcFirstSpacecraft = arcFirstSpacecraft;
     }
 
-    public int getSecondSpacecraft() {
-        return secondSpacecraft;
+    public int getArcSecondSpacecraft() {
+        return arcSecondSpacecraft;
     }
 
-    public void setSecondSpacecraft(int secondSpacecraft) {
-        this.secondSpacecraft = secondSpacecraft;
+    public void setArcSecondSpacecraft(int arcSecondSpacecraft) {
+        this.arcSecondSpacecraft = arcSecondSpacecraft;
     }
 
-    public int getThirdSpacecraft() {
-        return thirdSpacecraft;
+    public int getArcThirdSpacecraft() {
+        return arcThirdSpacecraft;
     }
 
-    public void setThirdSpacecraft(int thirdSpacecraft) {
-        this.thirdSpacecraft = thirdSpacecraft;
+    public void setArcThirdSpacecraft(int arcThirdSpacecraft) {
+        this.arcThirdSpacecraft = arcThirdSpacecraft;
     }
 
-    public int getFourthSpacecraft() {
-        return fourthSpacecraft;
+    public int getArcFourthSpacecraft() {
+        return arcFourthSpacecraft;
     }
 
-    public void setFourthSpacecraft(int fourthSpacecraft) {
-        this.fourthSpacecraft = fourthSpacecraft;
+    public void setArcFourthSpacecraft(int arcFourthSpacecraft) {
+        this.arcFourthSpacecraft = arcFourthSpacecraft;
     }
 
-    public int getFivethtSpacecraft() {
-        return fivethtSpacecraft;
+    public int getArcFivethtSpacecraft() {
+        return arcFivethtSpacecraft;
     }
 
-    public void setFivethtSpacecraft(int fivethtSpacecraft) {
-        this.fivethtSpacecraft = fivethtSpacecraft;
+    public void setArcFivethtSpacecraft(int arcFivethtSpacecraft) {
+        this.arcFivethtSpacecraft = arcFivethtSpacecraft;
     }
-    
-    
-    
+
+    public int getVar() {
+        return var;
+    }
+
+    public void setVar(int var) {
+        this.var = var;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
     
     
     
