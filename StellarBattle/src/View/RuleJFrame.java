@@ -1,6 +1,7 @@
 
 package View;
 
+import Controller.Board;
 import Model.Archive;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -11,7 +12,6 @@ public class RuleJFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("Rules");
         setResizable(false);
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -100,10 +100,16 @@ public class RuleJFrame extends javax.swing.JFrame {
             fc.showOpenDialog(this);
 
             File map = fc.getSelectedFile();
-            Archive a = new Archive(map.getPath()); 
-          
-        
-        
+            String path = map.getPath();
+            
+            System.err.println(path);
+            
+            //Archive archive = new Archive(path);
+            
+           // Board board = new Board(archive);
+            
+            //Archive a = new Archive(map.getPath()); 
+               
     }//GEN-LAST:event_mapButtonActionPerformed
 
     /**

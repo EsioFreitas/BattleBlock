@@ -23,21 +23,16 @@ public class Archive {
     private int var;
     
     private Board board = null; 
-
-    public Archive(String path) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
    
     public void Archive(String path) throws FileNotFoundException {
         Scanner reader = new Scanner(new File(path));
         
         while(reader.hasNext()){
+            
             String row = reader.nextLine();
-            
-            board = new Board();
-            
+                        
             if(row.contains("# width")){
+                
                 row = reader.nextLine();                 
                 
                 String[] content = row.split(" ");

@@ -1,6 +1,8 @@
 
 package Controller;
 
+import Model.Archive;
+
 public class Board {
     private int width = 0;
     private int height = 0;
@@ -14,5 +16,15 @@ public class Board {
     private int thirdSpacecraft;
     private int fourthSpacecraft;
     private int fivethtSpacecraft;
+    
+    private final Archive archive;
+    
+    
+    public Board(Archive archive){
+        this.archive = archive;
+        width = archive.getArcWidth();
+        height = archive.getArcHeight();       
+        
+    }
     
 }
