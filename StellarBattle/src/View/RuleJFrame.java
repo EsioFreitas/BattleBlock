@@ -1,6 +1,7 @@
 
 package View;
 
+import Model.Archive;
 import java.io.File;
 import javax.swing.JFileChooser;
 
@@ -84,20 +85,23 @@ public class RuleJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_desagreeButtonActionPerformed
 
     private void agreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeButtonActionPerformed
-        new PlayFrame().setVisible(true);
-        this.dispose();
+      //  if(tabuleiro == null){
+            
+       // }else{
+            new PlayFrame().setVisible(true);
+            this.dispose();
+       // }
     }//GEN-LAST:event_agreeButtonActionPerformed
 
     private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
-           try{
+           
             JFileChooser fc = new JFileChooser();
-            //fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fc.showOpenDialog(this);
 
             File map = fc.getSelectedFile();
-           } catch (Exception e){
-               e.printStackTrace();
-           }
+            Archive a = new Archive(map.getPath()); 
+          
         
         
     }//GEN-LAST:event_mapButtonActionPerformed

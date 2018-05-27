@@ -3,6 +3,7 @@ package Model;
 
 import Controller.Board;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
@@ -22,8 +23,13 @@ public class Archive {
     private int var;
     
     private Board board = null; 
-    
-    public void Archive(String path) throws Exception {
+
+    public Archive(String path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+    public void Archive(String path) throws FileNotFoundException {
         Scanner reader = new Scanner(new File(path));
         
         while(reader.hasNext()){
@@ -32,6 +38,7 @@ public class Archive {
             board = new Board();
             
             if(row.contains("# width")){
+                row = reader.nextLine();                 
                 
                 String[] content = row.split(" ");
                 var = Integer.parseInt(content[0]);
