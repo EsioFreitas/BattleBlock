@@ -4,6 +4,9 @@ package View;
 import Controller.Board;
 import Model.Archive;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 public class RuleJFrame extends javax.swing.JFrame {
@@ -104,11 +107,12 @@ public class RuleJFrame extends javax.swing.JFrame {
             
             System.err.println(path);
             
-            //Archive archive = new Archive(path);
+        try {
+            Archive archive = new Archive(path);
+        } catch (Exception ex) {
+            Logger.getLogger(RuleJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
-           // Board board = new Board(archive);
-            
-            //Archive a = new Archive(map.getPath()); 
                
     }//GEN-LAST:event_mapButtonActionPerformed
 

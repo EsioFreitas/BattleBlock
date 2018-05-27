@@ -17,14 +17,8 @@ public class Board {
     private int fourthSpacecraft;
     private int fivethtSpacecraft;
     
-    private final Archive archive;
     
     
-    public Board(Archive archive){
-        this.archive = archive;
-        width = archive.getArcWidth();
-        height = archive.getArcHeight();       
-        
-    }
+  
     
 }

@@ -43,27 +43,7 @@ public class LerArquivos {
                 System.out.println(arcWidth);
 
                 
-            } else if(row.contains("# matri")){
-                
-                
-                
-            }else if(row.contains("# number")){
-                if(row.contains("1")){
-                    
-                } else if(row.contains("2")){
-                    
-                } else if(row.contains("3")){
-                    
-                } else if(row.contains("4")){
-                    
-                } else if(row.contains("5")){
-                    
-                }
-                
-            }else if(row.contains("\n")){
-                continue;
             }
-            
             
         }
 

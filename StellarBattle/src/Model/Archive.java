@@ -4,6 +4,7 @@ package Model;
 import Controller.Board;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Scanner;
 
 
@@ -12,7 +13,8 @@ public class Archive {
     private int arcWidth;
     private int arcHeight;
     
-    private int[][] arcMatriz = new int[arcWidth][arcHeight];
+    private int[][] arcMatrix;
+    private String arcTemporatyMatrix = "";
         
     private int arcFirstSpacecraft;
     private int arcSecondSpacecraft;
@@ -21,34 +23,84 @@ public class Archive {
     private int arcFivethtSpacecraft;
     
     private int var;
+    private int cont;
+    private int lenth;
+    
+
     
     private Board board = null; 
+
    
-    public void Archive(String path) throws FileNotFoundException {
-        Scanner reader = new Scanner(new File(path));
+       
+    public Archive(String path) throws Exception{
         
-        while(reader.hasNext()){
+        
+        Scanner reader = new Scanner( new File(path));
+        
+        
             
             String row = reader.nextLine();
                         
-            if(row.contains("# width")){
-                
+            
+                //Linha das dimenções 
                 row = reader.nextLine();                 
                 
                 String[] content = row.split(" ");
                 var = Integer.parseInt(content[0]);
-                this.setArcWidth(var);
+                arcWidth = var;
                 var = Integer.parseInt(content[1]);
-                this.setArcHeight(var);
+                arcHeight = var;
                 
-                System.out.println(getArcWidth());
+                row = reader.nextLine();
+                row = reader.nextLine();
                 
-            } else if(row.contains("# matri")){
+                //Linha da matriz
+                //Pegando a matriz da imagem e jogando em uma string
+                for(int i = 0; i<arcHeight; i++){
+                    row = reader.nextLine();
+                    arcTemporatyMatrix += row;
+                }
+                
+                lenth = arcHeight*arcWidth;
+                int[] numbers = new int[lenth];
+
+                //Transformando a string em vetor de Int
+                for(int i = 0; i<lenth; i++){
+                    numbers[i] = Integer.parseInt(arcTemporatyMatrix.substring(i, i+1));
+                }
+                                
+                arcMatrix = new int[arcHeight][arcWidth];
+                
+                //Transformando o vector em uma matriz
+                for(int i = 0; i<arcHeight; i++){
+                    for(int j = 0; j<arcWidth; j++){
+                        arcMatrix[i][j] = numbers[cont];
+                        cont++;
+                    }
+                }
+                
+                //pegando numero dos barcos 
+                
+                
+                
+               
+
+
+                
+                
+                
+                
+            /*} else if(row.contains("# matri")){
                 
                 
                 
             }else if(row.contains("# number")){
                 if(row.contains("1")){
+                    row = reader.nextLine();
+                    
+                    String[] content = row.split(" ");
+                    var = Integer.parseInt(content[1]);
+                    System.err.println(var);
                     
                 } else if(row.contains("2")){
                     
@@ -58,97 +110,23 @@ public class Archive {
                     
                 } else if(row.contains("5")){
                     
-                }
+                }*/
                 
-            }else if(row.contains("\n")){
-                continue;
-            }
             
             
-        }
+            
         
     }
-
-    public int getArcWidth() {
-        return arcWidth;
-    }
-
-    public void setArcWidth(int arcWidth) {
-        this.arcWidth = arcWidth;
-    }
-
-    public int getArcHeight() {
-        return arcHeight;
-    }
-
-    public void setArcHeight(int arcHeight) {
-        this.arcHeight = arcHeight;
-    }
-
-    public int[][] getArcMatriz() {
-        return arcMatriz;
-    }
-
-    public void setArcMatriz(int[][] arcMatriz) {
-        this.arcMatriz = arcMatriz;
-    }
-
-    public int getArcFirstSpacecraft() {
-        return arcFirstSpacecraft;
-    }
-
-    public void setArcFirstSpacecraft(int arcFirstSpacecraft) {
-        this.arcFirstSpacecraft = arcFirstSpacecraft;
-    }
-
-    public int getArcSecondSpacecraft() {
-        return arcSecondSpacecraft;
-    }
-
-    public void setArcSecondSpacecraft(int arcSecondSpacecraft) {
-        this.arcSecondSpacecraft = arcSecondSpacecraft;
-    }
-
-    public int getArcThirdSpacecraft() {
-        return arcThirdSpacecraft;
-    }
-
-    public void setArcThirdSpacecraft(int arcThirdSpacecraft) {
-        this.arcThirdSpacecraft = arcThirdSpacecraft;
-    }
-
-    public int getArcFourthSpacecraft() {
-        return arcFourthSpacecraft;
-    }
-
-    public void setArcFourthSpacecraft(int arcFourthSpacecraft) {
-        this.arcFourthSpacecraft = arcFourthSpacecraft;
-    }
-
-    public int getArcFivethtSpacecraft() {
-        return arcFivethtSpacecraft;
-    }
-
-    public void setArcFivethtSpacecraft(int arcFivethtSpacecraft) {
-        this.arcFivethtSpacecraft = arcFivethtSpacecraft;
-    }
-
-    public int getVar() {
-        return var;
-    }
-
-    public void setVar(int var) {
-        this.var = var;
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
     }
     
     
     
-}
+    
+    
+    
+    
+    
+    
+    
+    
+    
