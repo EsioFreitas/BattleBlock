@@ -3,8 +3,6 @@ package Model;
 
 import Controller.Board;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.Scanner;
 
 
@@ -13,18 +11,19 @@ public class Archive {
     private int arcWidth;
     private int arcHeight;
     
-    private int[][] arcMatrix;
     private String arcTemporatyMatrix = "";
+    private int[][] arcMatrix;
         
     private int arcFirstSpacecraft;
     private int arcSecondSpacecraft;
     private int arcThirdSpacecraft;
     private int arcFourthSpacecraft;
-    private int arcFivethtSpacecraft;
+    private int arcFivethSpacecraft;
     
     private int var;
     private int cont;
     private int lenth;
+    private String[] content;
     
 
     
@@ -45,7 +44,7 @@ public class Archive {
                 //Linha das dimenções 
                 row = reader.nextLine();                 
                 
-                String[] content = row.split(" ");
+                content = row.split(" ");
                 var = Integer.parseInt(content[0]);
                 arcWidth = var;
                 var = Integer.parseInt(content[1]);
@@ -80,44 +79,42 @@ public class Archive {
                 }
                 
                 //pegando numero dos barcos 
-                
-                
-                
-               
+                row = reader.nextLine();
+                row = reader.nextLine();
 
-
+                System.out.println(row);
                 
+                row = reader.nextLine();
+                content = row.split(" ");
+                var = Integer.parseInt(content[1]);
+                arcFirstSpacecraft = var;
+                System.out.println(arcFirstSpacecraft);
                 
+                row = reader.nextLine();
+                content = row.split(" ");
+                var = Integer.parseInt(content[1]);
+                arcSecondSpacecraft = var;
+                System.out.println(arcSecondSpacecraft);
                 
+                row = reader.nextLine();
+                content = row.split(" ");
+                var = Integer.parseInt(content[1]);
+                arcThirdSpacecraft = var;
+                System.out.println(arcThirdSpacecraft);
                 
-            /*} else if(row.contains("# matri")){
+                row = reader.nextLine();
+                content = row.split(" ");
+                var = Integer.parseInt(content[1]);
+                arcFourthSpacecraft = var;
+                System.out.println(arcFourthSpacecraft);
                 
-                
-                
-            }else if(row.contains("# number")){
-                if(row.contains("1")){
-                    row = reader.nextLine();
-                    
-                    String[] content = row.split(" ");
-                    var = Integer.parseInt(content[1]);
-                    System.err.println(var);
-                    
-                } else if(row.contains("2")){
-                    
-                } else if(row.contains("3")){
-                    
-                } else if(row.contains("4")){
-                    
-                } else if(row.contains("5")){
-                    
-                }*/
-                
-            
-            
-            
-        
+                row = reader.nextLine();
+                content = row.split(" ");
+                var = Integer.parseInt(content[1]);
+                arcFivethSpacecraft = var;
+                System.out.println(arcFivethSpacecraft);
     }
-    }
+}
     
     
     

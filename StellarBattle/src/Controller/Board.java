@@ -15,7 +15,7 @@ public class Board {
     private int secondSpacecraft;
     private int thirdSpacecraft;
     private int fourthSpacecraft;
-    private int fivethtSpacecraft;
+    private int fivethSpacecraft;
     
     
     
