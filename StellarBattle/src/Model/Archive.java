@@ -41,7 +41,7 @@ public class Archive {
             String row = reader.nextLine();
                         
             
-                //Linha das dimenções 
+                //Pegando as dimenções 
                 row = reader.nextLine();                 
                 
                 content = row.split(" ");
@@ -53,7 +53,6 @@ public class Archive {
                 row = reader.nextLine();
                 row = reader.nextLine();
                 
-                //Linha da matriz
                 //Pegando a matriz da imagem e jogando em uma string
                 for(int i = 0; i<arcHeight; i++){
                     row = reader.nextLine();
@@ -78,7 +77,7 @@ public class Archive {
                     }
                 }
                 
-                //pegando numero dos barcos 
+                //Pegando numero dos barcos 
                 row = reader.nextLine();
                 row = reader.nextLine();
 
@@ -114,6 +113,44 @@ public class Archive {
                 arcFivethSpacecraft = var;
                 System.out.println(arcFivethSpacecraft);
     }
+
+    public int getArcWidth() {
+        return arcWidth;
+    }
+
+    public int getArcHeight() {
+        return arcHeight;
+    }
+
+    public String getArcTemporatyMatrix() {
+        return arcTemporatyMatrix;
+    }
+
+    public int[][] getArcMatrix() {
+        return arcMatrix;
+    }
+
+    public int getArcFirstSpacecraft() {
+        return arcFirstSpacecraft;
+    }
+
+    public int getArcSecondSpacecraft() {
+        return arcSecondSpacecraft;
+    }
+
+    public int getArcThirdSpacecraft() {
+        return arcThirdSpacecraft;
+    }
+
+    public int getArcFourthSpacecraft() {
+        return arcFourthSpacecraft;
+    }
+
+    public int getArcFivethSpacecraft() {
+        return arcFivethSpacecraft;
+    }
+    
+    
 }
     
     

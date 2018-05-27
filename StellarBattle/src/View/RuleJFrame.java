@@ -109,6 +109,7 @@ public class RuleJFrame extends javax.swing.JFrame {
             
         try {
             Archive archive = new Archive(path);
+            Board board = new Board(archive);
         } catch (Exception ex) {
             Logger.getLogger(RuleJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
