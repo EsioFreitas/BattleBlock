@@ -15,6 +15,7 @@ public class RuleJFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("Rules");
         setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")

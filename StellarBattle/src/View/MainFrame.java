@@ -7,6 +7,8 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("Stellar Battle");
         setResizable(false);
+        setLocationRelativeTo(null);
+        
     }
 
     @SuppressWarnings("unchecked")

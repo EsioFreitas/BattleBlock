@@ -4,11 +4,13 @@ package View;
 import Controller.Board;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class BoardFrame extends Canvas {
     
-    public static final int RECT_WIDTH = 80;
-    public static final int RECT_HEIGHT = 80;
+    public static final int WIDTH = 40;
+    public static final int HEIGHT = 40;
     public static final int MARGIN = 0;
     
     private Board board; 
@@ -25,7 +27,7 @@ public class BoardFrame extends Canvas {
     public void paint(Graphics g) {
 		
         if(animationCounterDirection == 0) {
-                if (animationCounter < 6) {
+                if (animationCounter < 15) {
                         animationCounter++;
                 }
                 else {
@@ -40,8 +42,21 @@ public class BoardFrame extends Canvas {
                         animationCounterDirection = 0;
                 }
         }
-
-    
+        
+        ImageIcon sky = new ImageIcon("View/img/sky/sky"+String.valueOf(animationCounter)+".png");
+        ImageIcon smoke = new ImageIcon("View/img/smoke/smoke.png");
+        
+        final Image imgSky = sky.getImage();
+        final Image imgSmoke = smoke.getImage();
+        
+        for(int i=0; i<rows; i++){
+            for(int j=0; j<cols; j++){
+                g.drawImage(imgSky, i*WIDTH+MARGIN, j*HEIGHT+MARGIN, WIDTH, HEIGHT, null);
+                if(explosionMatrix[i][j] == 6){
+                    g.drawImage(imgSmoke, i*WIDTH+MARGIN, j*HEIGHT+MARGIN, WIDTH, HEIGHT, null);
+                }
+            }
+        }
     
     
     

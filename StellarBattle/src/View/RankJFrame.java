@@ -7,6 +7,7 @@ public class RankJFrame extends javax.swing.JFrame {
         initComponents();
         setTitle("Rank");
         setResizable(false);
+        setLocationRelativeTo(null);
     }
 
 
