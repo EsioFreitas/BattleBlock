@@ -8,13 +8,12 @@ import java.awt.Image;
 import javafx.scene.layout.Border;
 import javax.swing.ImageIcon;
 
-public class BoardFrame extends Canvas {
+public class BoardCanvas extends Canvas {
     
-    public static final int WIDTH = 40;
-    public static final int HEIGHT = 40;
+    public static final int WIDTH = 80;
+    public static final int HEIGHT = 80;
     public static final int MARGIN = 0;
     
-    private Board board; 
     
     private int rows = 10;//board.getHeight();
     private int cols = 10;//board.getWidth();
@@ -22,18 +21,13 @@ public class BoardFrame extends Canvas {
     private int animationCounter = 0;
     private int animationCounterDirection = 0;
     
-    private int [][] explosionMatrix = new int[rows][cols];
-    
-    public BoardFrame(Board board){
-        this.board = board;
-    }
-    
+    private int [][] explosionMatrix = new int[rows][cols]; 
     
     @Override
     public void paint(Graphics g) {
 		
         if(animationCounterDirection == 0) {
-                if (animationCounter < 15) {
+                if (animationCounter < 4) {
                         animationCounter++;
                 }
                 else {
@@ -49,8 +43,8 @@ public class BoardFrame extends Canvas {
                 }
         }
         
-        ImageIcon sky = new ImageIcon("View/img/sky/sky"+String.valueOf(animationCounter)+".png");
-        ImageIcon smoke = new ImageIcon("View/img/smoke/smoke.png");
+        ImageIcon sky = new ImageIcon("./img/sky"+String.valueOf(animationCounter)+".png");
+        ImageIcon smoke = new ImageIcon("./img/smoke.png");
         
         final Image imgSky = sky.getImage();
         final Image imgSmoke = smoke.getImage();
@@ -76,4 +70,8 @@ public class BoardFrame extends Canvas {
         return cols;
     }
     
+    public void setShot(int x, int y) {
+		explosionMatrix[x][y] = 6;
+	}
+
 }
