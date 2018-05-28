@@ -91,8 +91,7 @@ public class RuleJFrame extends javax.swing.JFrame {
       //  if(tabuleiro == null){
             
        // }else{
-            new PlayFrame().setVisible(true);
-            this.dispose();
+            
        // }
     }//GEN-LAST:event_agreeButtonActionPerformed
 

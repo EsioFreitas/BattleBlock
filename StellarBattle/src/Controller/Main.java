@@ -6,11 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         new MainFrame().setVisible(true);
-        /*
-         * Botar os atributos em board 
-         * Como vai funcionar a leitura do arquivo e a captura dos dados 
-         * 
-         */
+
     }
     
 }

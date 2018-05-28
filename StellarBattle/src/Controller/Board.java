@@ -30,6 +30,43 @@ public class Board {
         fivethSpacecraft = archive.getArcFivethSpacecraft();
          
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
+    public int getTotalNumberSpacecraft() {
+        return totalNumberSpacecraft;
+    }
+
+    public int getFirstSpacecraft() {
+        return firstSpacecraft;
+    }
+
+    public int getSecondSpacecraft() {
+        return secondSpacecraft;
+    }
+
+    public int getThirdSpacecraft() {
+        return thirdSpacecraft;
+    }
+
+    public int getFourthSpacecraft() {
+        return fourthSpacecraft;
+    }
+
+    public int getFivethSpacecraft() {
+        return fivethSpacecraft;
+    }
+    
     
     
     
