@@ -5,6 +5,7 @@ import Controller.Board;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
+import javafx.scene.layout.Border;
 import javax.swing.ImageIcon;
 
 public class BoardFrame extends Canvas {
@@ -15,13 +16,18 @@ public class BoardFrame extends Canvas {
     
     private Board board; 
     
-    private int rows = board.getHeight();
-    private int cols = board.getWidth();
+    private int rows = 10;//board.getHeight();
+    private int cols = 10;//board.getWidth();
     
     private int animationCounter = 0;
     private int animationCounterDirection = 0;
     
     private int [][] explosionMatrix = new int[rows][cols];
+    
+    public BoardFrame(Board board){
+        this.board = board;
+    }
+    
     
     @Override
     public void paint(Graphics g) {
@@ -61,4 +67,13 @@ public class BoardFrame extends Canvas {
     
     
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+    
 }

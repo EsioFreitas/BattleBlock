@@ -81,37 +81,31 @@ public class Archive {
                 row = reader.nextLine();
                 row = reader.nextLine();
 
-                System.out.println(row);
                 
                 row = reader.nextLine();
                 content = row.split(" ");
                 var = Integer.parseInt(content[1]);
                 arcFirstSpacecraft = var;
-                System.out.println(arcFirstSpacecraft);
                 
                 row = reader.nextLine();
                 content = row.split(" ");
                 var = Integer.parseInt(content[1]);
                 arcSecondSpacecraft = var;
-                System.out.println(arcSecondSpacecraft);
                 
                 row = reader.nextLine();
                 content = row.split(" ");
                 var = Integer.parseInt(content[1]);
                 arcThirdSpacecraft = var;
-                System.out.println(arcThirdSpacecraft);
                 
                 row = reader.nextLine();
                 content = row.split(" ");
                 var = Integer.parseInt(content[1]);
                 arcFourthSpacecraft = var;
-                System.out.println(arcFourthSpacecraft);
                 
                 row = reader.nextLine();
                 content = row.split(" ");
                 var = Integer.parseInt(content[1]);
                 arcFivethSpacecraft = var;
-                System.out.println(arcFivethSpacecraft);
     }
 
     public int getArcWidth() {

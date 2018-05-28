@@ -3,6 +3,7 @@ package View;
 
 import Controller.Board;
 import Model.Archive;
+import java.awt.EventQueue;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -10,7 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 public class RuleJFrame extends javax.swing.JFrame {
-
+    
+    
     public RuleJFrame() {
         initComponents();
         setTitle("Rules");
@@ -22,20 +24,10 @@ public class RuleJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        agreeButton = new javax.swing.JButton();
         desagreeButton = new javax.swing.JButton();
         mapButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        agreeButton.setText("Agree");
-        agreeButton.setMaximumSize(new java.awt.Dimension(150, 29));
-        agreeButton.setMinimumSize(new java.awt.Dimension(150, 29));
-        agreeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agreeButtonActionPerformed(evt);
-            }
-        });
 
         desagreeButton.setText("Desagree");
         desagreeButton.setMaximumSize(new java.awt.Dimension(150, 29));
@@ -61,22 +53,16 @@ public class RuleJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(desagreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                .addComponent(agreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(219, 219, 219)
                 .addComponent(mapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(198, Short.MAX_VALUE)
-                .addComponent(mapButton)
-                .addGap(133, 133, 133)
+                .addContainerGap(360, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(desagreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(desagreeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mapButton))
                 .addContainerGap())
         );
 
@@ -88,14 +74,6 @@ public class RuleJFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_desagreeButtonActionPerformed
 
-    private void agreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeButtonActionPerformed
-      //  if(tabuleiro == null){
-            
-       // }else{
-            
-       // }
-    }//GEN-LAST:event_agreeButtonActionPerformed
-
     private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
            
             JFileChooser fc = new JFileChooser();
@@ -105,11 +83,23 @@ public class RuleJFrame extends javax.swing.JFrame {
             File map = fc.getSelectedFile();
             String path = map.getPath();
             
-            System.err.println(path);
             
         try {
             Archive archive = new Archive(path);
             Board board = new Board(archive);
+                        System.out.println("ddooooi");
+
+            BoardFrame boardFrame = new BoardFrame(board);
+            boardFrame.setVisible(true);
+            
+            
+            System.out.println(boardFrame.getCols());
+            System.out.println("ooooi");
+
+            new PlayFrame(board).setVisible(true);
+                        System.out.println();
+
+            
         } catch (Exception ex) {
             Logger.getLogger(RuleJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,7 +143,6 @@ public class RuleJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agreeButton;
     private javax.swing.JButton desagreeButton;
     private javax.swing.JButton mapButton;
     // End of variables declaration//GEN-END:variables
