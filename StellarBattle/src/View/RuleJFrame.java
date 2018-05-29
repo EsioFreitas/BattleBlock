@@ -89,18 +89,7 @@ public class RuleJFrame extends javax.swing.JFrame {
             Board board = new Board(archive);
             
             System.out.println("ddooooi");
-
-            EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PlayFrame frame = new PlayFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-            
+        
         } catch (Exception ex) {
             Logger.getLogger(RuleJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
