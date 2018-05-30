@@ -10,7 +10,10 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.Buffer;
+import javax.imageio.ImageIO;
 
 import javax.swing.ImageIcon;
 
@@ -35,23 +38,34 @@ public class GameCanvas extends Canvas {
             explosionMatrix = archive.getArcMatrix();
             setSize(AREA * rows, AREA *cols);
             //setSize(AREA, AREA);
+
         }
+        
 	
 	@Override
 	public void paint(Graphics g) {
-                int lenthI = rows+1;
-                int lenthJ = cols+1;
+            
+                int lenthI = rows;
+                int lenthJ = cols;
 		g.setColor(Color.BLUE);
-		g.drawRect(0, 0, rows+1, cols);
-		for (int i = 0; i < lenthI; i++) {
+		
+                g.setColor(Color.red);
+		for (int i = 0; i < cols+1; i++) {
                     g.drawLine(i * AREA, 0, i * AREA, AREA*rows);
-                    for(int j =0; j<lenthJ; j++){
-			g.drawLine(0, i * AREA, AREA*cols, i *AREA);
+                    for(int j =0; j<rows+1; j++){
+			g.drawLine(0, j * AREA, AREA*cols, j *AREA);
                     }
                         
+                    
 		}
+                
+               
+                
+                Image teste = new ImageIcon("imagens/explosion.png").getImage();
+               
+		g.drawImage(teste, AREA*10, AREA*10, this);
 		
-		// Prepare an ImageIcon
+                /*// Prepare an ImageIcon
 		ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
 		ImageIcon iconShot = new ImageIcon("images/explosion.png");
 		// Prepare an Image object to be used by drawImage()
@@ -66,7 +80,7 @@ public class GameCanvas extends Canvas {
 				}
 			}
 
-		}	
+		}*/	
 	}
 	
     public void setShot(int x, int y) {
@@ -74,13 +88,6 @@ public class GameCanvas extends Canvas {
     }
 
 
-    public int getMargin() {
-        return margin;
-    }
-
-    public void setMargin(int margin) {
-        this.margin = margin;
-    }
 
     public int getRows() {
         return rows;
