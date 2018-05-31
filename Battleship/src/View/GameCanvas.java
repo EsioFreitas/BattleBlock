@@ -63,8 +63,6 @@ public class GameCanvas extends Canvas {
 			}
 		}
 
-		this.oque();
-
 		// Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
 
 		//ImageIcon iconShot = new ImageIcon("images/explosion.png");

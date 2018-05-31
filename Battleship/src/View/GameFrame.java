@@ -10,6 +10,7 @@ import java.awt.font.GraphicAttribute;
 import javax.swing.JFrame;
 
 import Controller.CanvasThread;
+import Controller.Player;
 
 public class GameFrame extends JFrame {
 
@@ -19,8 +20,9 @@ public class GameFrame extends JFrame {
 	private int width;
 	private int hight;
 	public static final int AREA = 60;
+	private Player player;
 
-	public GameFrame(ArcMap archve) {
+	public GameFrame(ArcMap archve, Player player) {
 		this.archive = archve;
 		this.width = archve.getArcWidth();
 		this.hight = archive.getArcHeight();

@@ -2,6 +2,7 @@
 package View;
 
 import Controller.Board;
+import Controller.Player;
 import Model.ArcMap;
 import java.io.File;
 import java.util.logging.Level;
@@ -85,7 +86,10 @@ public class RuleJFrame extends javax.swing.JFrame {
         try {
             ArcMap archive = new ArcMap(path);
             Board board = new Board(archive);
-            new GameFrame(archive).setVisible(true);
+            Player player = new Player(archive);
+            new GameFrame(archive, player).setVisible(true);
+          //  new GameFrame(archive).setVisible(true);
+           
             
             
             

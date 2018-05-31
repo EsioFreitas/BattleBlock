@@ -22,13 +22,7 @@ public class Board {
         this.height = archive.getArcHeight();
         
         this.map = archive.getArcMatrix();
-    
-        quantSpacecraft[0] = archive.getArcFirstSpacecraft();
-        quantSpacecraft[1] = archive.getArcSecondSpacecraft();
-        quantSpacecraft[2] = archive.getArcThirdSpacecraft();
-        quantSpacecraft[3] = archive.getArcFourthSpacecraft();
-        quantSpacecraft[4] = archive.getArcFivethSpacecraft();
-        
+
         for(int i=0;i<5;i++){
             totalNumberSpacecraft += quantSpacecraft[i];
             System.out.println(totalNumberSpacecraft);
