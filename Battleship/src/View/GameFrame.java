@@ -5,12 +5,16 @@ import java.awt.BorderLayout;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.font.GraphicAttribute;
+
 import javax.swing.JFrame;
+
+import Controller.CanvasThread;
 
 public class GameFrame extends JFrame {
 
 	private GameCanvas canvas;
-	// CanvasThread updateScreenThread = new CanvasThread(canvas);
+	CanvasThread repaintThread;
 	private ArcMap archive;
 	private int width;
 	private int hight;
@@ -37,12 +41,14 @@ public class GameFrame extends JFrame {
 		// setVisible(true);
 
 		// Inicia Thread com timer para redesenhar a tela.
-		// updateScreenThread.start();
-
+		repaintThread = new CanvasThread(canvas);
+		repaintThread.start();
 		canvas.addMouseListener(new MouseListener() {
 
 			@Override
+			
 			public void mouseReleased(MouseEvent e) {
+				repaint();
 				
 				int x = e.getX();
 				int y = e.getY();
@@ -62,7 +68,7 @@ public class GameFrame extends JFrame {
 				//System.out.println( y_pos);
 
 
-				//canvas.setShot(x_pos, y_pos);
+				canvas.setShot(x_pos, y_pos);
 				
 				//canvas.oque();
 

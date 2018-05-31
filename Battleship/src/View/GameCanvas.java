@@ -44,8 +44,14 @@ public class GameCanvas extends Canvas {
 	public void paint(Graphics g) {
 
 		g.setColor(new Color(131, 209, 232));
+		
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				g.fillRect(i*AREA, j*AREA, AREA,AREA);
 
-		g.fillRect(0, 0, rows * AREA, cols * AREA);
+			}
+		}
+		
 		g.setColor(Color.white);
 		g.drawRect(0, 0, rows * AREA, cols * AREA);
 
@@ -59,18 +65,27 @@ public class GameCanvas extends Canvas {
 
 		this.oque();
 
-		/*
-		 * // Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
-		 * ImageIcon iconShot = new ImageIcon("images/explosion.png"); // Prepare an
-		 * Image object to be used by drawImage() final Image img = icon.getImage();
-		 * final Image imgShot = iconShot.getImage(); this.oque();
-		 * 
-		 * for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) {
-		 * g.drawImage(img, i , j , AREA, AREA, null); if (explosionMatrix[i][j] == 1) {
-		 * g.drawImage(imgShot, i * AREA, j * AREA, AREA, AREA, null); } }
-		 * 
-		 * }
-		 */
+		// Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
+
+		//ImageIcon iconShot = new ImageIcon("images/explosion.png");
+		// Prepare anImage object to be used by drawImage()
+
+		//final Image img = icon.getImage();
+		//final Image imgShot = iconShot.getImage();
+		this.oque();
+
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				//g.drawImage(img, i, j, AREA, AREA, null);
+				if (explosionMatrix[i][j] == 1) {
+					g.setColor(Color.white);
+
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}
+			}
+
+		}
+		
 
 	}
 

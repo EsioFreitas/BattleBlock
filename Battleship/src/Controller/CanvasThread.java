@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package View;
-
-
+package Controller;
 
 import java.awt.Graphics;
+
+import View.GameCanvas;
 
 public class CanvasThread extends Thread {
 	private GameCanvas canvas;
@@ -22,10 +17,10 @@ public class CanvasThread extends Thread {
 		while(running) {
 			try {
 				Thread.sleep(100);
+				canvas.paint(canvas.getGraphics());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			canvas.paint(canvas.getGraphics());
 		}
 	}
 }
