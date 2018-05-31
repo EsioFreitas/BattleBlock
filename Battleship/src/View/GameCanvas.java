@@ -27,7 +27,7 @@ public class GameCanvas extends Canvas {
 	private int cols;
 	private ArcMap achive;
 
-	private int[][] explosionMatrix = new int[rows][cols];
+	private int[][] explosionMatrix;
 
 	public GameCanvas(ArcMap archive) {
 		this.achive = archive;
@@ -37,8 +37,10 @@ public class GameCanvas extends Canvas {
 		setSize(AREA * cols, AREA * rows);
 		setLocation(0, 0);
 		// setSize(AREA, AREA);
-
+		explosionMatrix = new int[rows][cols];
 	}
+	
+	
 
 	// @Override
 	public void paint(Graphics g) {
@@ -70,12 +72,12 @@ public class GameCanvas extends Canvas {
 
 		//final Image img = icon.getImage();
 		//final Image imgShot = iconShot.getImage();
-		this.oque();
+		//this.oque();
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				//g.drawImage(img, i, j, AREA, AREA, null);
-				if (explosionMatrix[i][j] == 1) {
+				if (explosionMatrix[i][j] == 0) {
 					g.setColor(Color.white);
 
 					g.fillRect(i*AREA, j*AREA, AREA,AREA);
@@ -123,7 +125,7 @@ public class GameCanvas extends Canvas {
 		this.explosionMatrix = explosionMatrix;
 	}
 
-	public void oque() {
+	/*public void oque() {
 		System.out.println("");
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
@@ -131,6 +133,6 @@ public class GameCanvas extends Canvas {
 			}
 			System.out.println("");
 		}
-	}
+	}*/
 
 }

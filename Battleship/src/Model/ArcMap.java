@@ -97,6 +97,7 @@ public class ArcMap {
 		arcFivethShip = var;
 		
 		arcFleet = getArcFirstShip()+getArcSecondShip()+getArcThirdShip()+getArcFourthShip()+getArcFivethShip();
+		System.out.println(arcFleet+"eeeeeeeeeeeeee'");
 	}
 
 	public int getArcFirstShip() {

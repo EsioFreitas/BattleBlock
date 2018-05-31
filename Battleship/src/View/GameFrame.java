@@ -1,3 +1,16 @@
+
+/*Ativar tiros -- hj
+ *Descontar recursos -- amanha
+ *Finalizar jogo -- sab 
+ *pontuar -- sab 
+ *rank  -- dom 
+ *artes -- segunda 
+ * */
+
+
+
+
+
 package View;
 
 import Model.ArcMap;
@@ -11,6 +24,8 @@ import javax.swing.JFrame;
 
 import Controller.CanvasThread;
 import Controller.Player;
+import javax.swing.JRadioButton;
+import javax.swing.JButton;
 
 public class GameFrame extends JFrame {
 
@@ -22,22 +37,25 @@ public class GameFrame extends JFrame {
 	public static final int AREA = 60;
 	private Player player;
 
-	public GameFrame(ArcMap archve, Player player) {
+	public GameFrame(ArcMap archve) {
 		this.archive = archve;
+		
 		this.width = archve.getArcWidth();
 		this.hight = archive.getArcHeight();
 		
 		canvas = new GameCanvas(archive);
+		player = new Player(archve, canvas);
+		System.out.println(player.weaponry(2));
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setLayout(new BorderLayout());
+		getContentPane().setLayout(new BorderLayout());
 		setTitle("Stellar Battle");
-		add(BorderLayout.WEST, canvas);
+		getContentPane().add(BorderLayout.WEST, canvas);
 		setResizable(false);
 
 		// Define largura e altura da janela principal
-		setSize(AREA * width,200+canvas.AREA * hight);
+		setSize(AREA * width,AREA * hight);
 		setLocationRelativeTo(null);
 
 		// setVisible(true);
@@ -54,8 +72,6 @@ public class GameFrame extends JFrame {
 				
 				int x = e.getX();
 				int y = e.getY();
-				
-				
 
 				int x_pos = x / canvas.AREA;
 				int y_pos = y / canvas.AREA;
@@ -70,7 +86,7 @@ public class GameFrame extends JFrame {
 				//System.out.println( y_pos);
 
 
-				canvas.setShot(x_pos, y_pos);
+				//player.setPowerDestroyRow(x_pos, y_pos);
 				
 				//canvas.oque();
 
