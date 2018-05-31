@@ -107,6 +107,7 @@ public class ArcMap {
                 var = Integer.parseInt(content[1]);
                 arcFivethSpacecraft = var;
     }
+    
 
     public int getArcWidth() {
         return arcWidth;

@@ -34,63 +34,54 @@ public class GameCanvas extends Canvas {
 		this.rows = archive.getArcHeight();
 		this.cols = archive.getArcWidth();
 		explosionMatrix = archive.getArcMatrix();
-		setSize(AREA * rows, AREA * cols);
+		setSize(AREA * cols, AREA * rows);
+		setLocation(0, 0);
 		// setSize(AREA, AREA);
 
 	}
-	
-	
 
-	
-	
-	
-	@Override
+	// @Override
 	public void paint(Graphics g) {
-
-		int lenthI = rows;
-		int lenthJ = cols;
 
 		g.setColor(new Color(131, 209, 232));
 
-		g.fillRect(0, 0, cols * AREA, rows * AREA);
-
+		g.fillRect(0, 0, rows * AREA, cols * AREA);
 		g.setColor(Color.white);
-
-		for (int i = 0; i < cols + 1; i++) {
-			g.drawLine(i * AREA, 0, i * AREA, AREA * rows);
-			for (int j = 0; j < rows + 1; j++) {
-				g.drawLine(0, j * AREA, AREA * cols, j * AREA);
-			}
-		}
-		
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-			System.out.print(explosionMatrix[i][j]);
-			}
-			System.out.println("");
-		}
-
-		// Prepare an ImageIcon
-		ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
-		ImageIcon iconShot = new ImageIcon("images/explosion.png");
-		// Prepare an Image object to be used by drawImage()
-		final Image img = icon.getImage();
-		final Image imgShot = iconShot.getImage();
+		g.drawRect(0, 0, rows * AREA, cols * AREA);
 
 		for (int i = 0; i < rows; i++) {
+			g.drawLine(i * AREA, 0, i * AREA, AREA * cols);
 			for (int j = 0; j < cols; j++) {
-				g.drawImage(img, i * AREA, j * AREA, AREA, AREA, null);
-				if (explosionMatrix[i][j] == 1) {
-					g.drawImage(imgShot, i * AREA, j * AREA, AREA, AREA, null);
-				}
-			}
+				g.drawLine(0, j * AREA, AREA * rows, j * AREA);
 
+			}
 		}
+
+		this.oque();
+
+		/*
+		 * // Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
+		 * ImageIcon iconShot = new ImageIcon("images/explosion.png"); // Prepare an
+		 * Image object to be used by drawImage() final Image img = icon.getImage();
+		 * final Image imgShot = iconShot.getImage(); this.oque();
+		 * 
+		 * for (int i = 0; i < rows; i++) { for (int j = 0; j < cols; j++) {
+		 * g.drawImage(img, i , j , AREA, AREA, null); if (explosionMatrix[i][j] == 1) {
+		 * g.drawImage(imgShot, i * AREA, j * AREA, AREA, AREA, null); } }
+		 * 
+		 * }
+		 */
+
 	}
-	
+
+	public void changeMatrix(int i, int j, GameCanvas canvas) {
+
+	}
+
 	public void setShot(int x, int y) {
 		explosionMatrix[x][y] = 1;
 	}
+
 	public int getShot(int x, int y) {
 		return explosionMatrix[x][y];
 	}
@@ -117,6 +108,16 @@ public class GameCanvas extends Canvas {
 
 	public void setExplosionMatrix(int[][] explosionMatrix) {
 		this.explosionMatrix = explosionMatrix;
+	}
+
+	public void oque() {
+		System.out.println("");
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				System.out.print(explosionMatrix[i][j]);
+			}
+			System.out.println("");
+		}
 	}
 
 }

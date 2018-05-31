@@ -20,18 +20,18 @@ public class GameFrame extends JFrame {
 		this.archive = archve;
 		this.width = archve.getArcWidth();
 		this.hight = archive.getArcHeight();
-
+		
 		canvas = new GameCanvas(archive);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setLayout(new BorderLayout());
 		setTitle("Stellar Battle");
-		add(BorderLayout.CENTER, canvas);
+		add(BorderLayout.WEST, canvas);
 		setResizable(false);
 
 		// Define largura e altura da janela principal
-		setSize(AREA * width, canvas.AREA * hight);
+		setSize(AREA * width,200+canvas.AREA * hight);
 		setLocationRelativeTo(null);
 
 		// setVisible(true);
@@ -43,15 +43,28 @@ public class GameFrame extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				
 				int x = e.getX();
 				int y = e.getY();
+				
+				
 
 				int x_pos = x / canvas.AREA;
 				int y_pos = y / canvas.AREA;
 				
+				//mudar(x y canvas)
+				
+				
+
 				System.out.println(canvas.getShot(x_pos, y_pos));
+				//System.out.println(x_pos);
+
+				//System.out.println( y_pos);
+
 
 				//canvas.setShot(x_pos, y_pos);
+				
+				//canvas.oque();
 
 			}
 
@@ -73,5 +86,7 @@ public class GameFrame extends JFrame {
 
 		});
 	}
+	
+	
 
 }
