@@ -24,6 +24,9 @@ import javax.swing.JFrame;
 
 import Controller.Thread.CanvasThread;
 import Controller.Player;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.util.Locale;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
@@ -54,7 +57,11 @@ public class GameFrame extends JFrame {
 		setResizable(false);
 		setSize(AREA * width,AREA * hight);
 		setLocationRelativeTo(null);
-                		getContentPane().add(BorderLayout.CENTER, canvas);
+                
+          
+                
+                getContentPane().add(BorderLayout.CENTER, canvas);
+
 
 
 		repaintThread = new CanvasThread(canvas);

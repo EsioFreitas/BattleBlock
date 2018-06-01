@@ -37,7 +37,7 @@ public class GameCanvas extends Canvas {
 		setSize(AREA * cols, AREA * rows);
                 
                 
-		this.setLocation(800, 1000);
+                
                 
 		 setSize(rows*AREA, cols*AREA);
 		explosionMatrix = new int[rows][cols];
@@ -93,33 +93,43 @@ public class GameCanvas extends Canvas {
 
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
-				//g.drawImage(img, i, j, AREA, AREA, null);
-				if (explosionMatrix[i][j] == 0) {
-					g.setColor(new Color(131, 209, 232));
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				} else if (explosionMatrix[i][j] == 1) {
-					g.setColor(Color.WHITE);
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				} else if (explosionMatrix[i][j] == 2) {
-					g.setColor(Color.PINK);
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}else if (explosionMatrix[i][j] == 3) {
-					g.setColor(Color.BLACK);
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}else if (explosionMatrix[i][j] == 4) {
-					g.setColor(Color.GREEN);
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}else if (explosionMatrix[i][j] == 5) {
-					g.setColor(Color.YELLOW);
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}else if (explosionMatrix[i][j] == 6) {
+                            //g.drawImage(img, i, j, AREA, AREA, null);
+                            switch (explosionMatrix[i][j]) {
+                                case 0:
+                                    g.setColor(new Color(131, 209, 232));
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 1:
+                                    g.setColor(Color.WHITE);
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 2:
+                                    g.setColor(Color.PINK);
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 3:
+                                    g.setColor(Color.magenta);
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 4:
+                                    g.setColor(Color.GREEN);
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 5:
+                                    g.setColor(Color.YELLOW);
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                case 6:
                                     g.setColor(new Color(32, 156, 185));
                                     g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}
+                                    break;
+                                default:
+                                    break;
+                            }
 			}
 
 		}
-		g.setColor(Color.white);
+		g.setColor(Color.black);
 		g.drawRect(0, 0, rows * AREA, cols * AREA);
 
 		for (int i = 0; i < rows; i++) {
