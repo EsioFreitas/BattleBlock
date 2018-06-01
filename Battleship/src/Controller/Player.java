@@ -44,6 +44,10 @@ public class Player {
 		explosionMatrix[x][y] = 1;
 
     }
+    public void waterShot(int x, int y) {
+		explosionMatrix[x][y] = 6;
+
+    }
     
     public void setPowerSee(int x, int y) {
         explosionMatrix[x][y] = 1;

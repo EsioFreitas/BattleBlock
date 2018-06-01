@@ -98,6 +98,20 @@ public class ArcMap {
 		
 		arcFleet = getArcFirstShip()+getArcSecondShip()+getArcThirdShip()+getArcFourthShip()+getArcFivethShip();
 		System.out.println(arcFleet+"eeeeeeeeeeeeee'");
+                
+                System.out.println("");
+		for (int i = 0; i < arcHeight; i++) {
+			for (int j = 0; j < arcWidth; j++) {
+				System.out.print(arcMatrix[i][j]);
+			}
+			System.out.println("");
+		}
+	}
+	
+	public int getPosition(int[][] matrix, int x, int y) {
+		matrix[x][y] = arcMatrix[x][y];
+		return matrix[x][y];
+
 	}
 
 	public int getArcFirstShip() {

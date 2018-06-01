@@ -1,4 +1,4 @@
-package Controller;
+package Controller.Thread;
 
 import java.awt.Graphics;
 

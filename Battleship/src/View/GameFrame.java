@@ -22,21 +22,23 @@ import java.awt.font.GraphicAttribute;
 
 import javax.swing.JFrame;
 
-import Controller.CanvasThread;
+import Controller.Thread.CanvasThread;
 import Controller.Player;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 
 public class GameFrame extends JFrame {
+    
+        public static final int AREA = 60;
 
 	private GameCanvas canvas;
 	CanvasThread repaintThread;
 	private ArcMap archive;
+        private Player player;
+        
 	private int width;
 	private int hight;
-	public static final int AREA = 60;
-	private Player player;
-
+        
 	public GameFrame(ArcMap archve) {
 		this.archive = archve;
 		
@@ -45,42 +47,41 @@ public class GameFrame extends JFrame {
 		
 		canvas = new GameCanvas(archive);
 		player = new Player(archve, canvas);
-		System.out.println(player.weaponry(2));
-
+                
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Stellar Battle");
-		getContentPane().add(BorderLayout.WEST, canvas);
 		setResizable(false);
-
-		// Define largura e altura da janela principal
 		setSize(AREA * width,AREA * hight);
 		setLocationRelativeTo(null);
+                		getContentPane().add(BorderLayout.CENTER, canvas);
 
-		// setVisible(true);
 
-		// Inicia Thread com timer para redesenhar a tela.
 		repaintThread = new CanvasThread(canvas);
 		repaintThread.start();
 		canvas.addMouseListener(new MouseListener() {
 
 			@Override
-			
 			public void mouseReleased(MouseEvent e) {
-				repaint();
-				
+                            				
 				int x = e.getX();
 				int y = e.getY();
 
 				int x_pos = x / canvas.AREA;
 				int y_pos = y / canvas.AREA;
 				
+				int opc = archve.getPosition(canvas.getExplosionMatrix(), x_pos, y_pos);
+				
+				if (opc == 1) {
+					player.setShot(x_pos, y_pos);
+				} else if  (opc == 0){
+					player.waterShot(x_pos, y_pos);
+				}
 				//mudar(x y canvas)
 				
 				
 
-				System.out.println(canvas.getShot(x_pos, y_pos));
+				//System.out.println(canvas.getShot(x_pos, y_pos));
 				//System.out.println(x_pos);
 
 				//System.out.println( y_pos);
@@ -88,7 +89,9 @@ public class GameFrame extends JFrame {
 
 				//player.setPowerDestroyRow(x_pos, y_pos);
 				
-				//canvas.oque();
+				//
+                                
+                                canvas.oque();
 
 			}
 

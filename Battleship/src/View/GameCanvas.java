@@ -33,11 +33,27 @@ public class GameCanvas extends Canvas {
 		this.achive = archive;
 		this.rows = archive.getArcHeight();
 		this.cols = archive.getArcWidth();
-		explosionMatrix = archive.getArcMatrix();
+		
 		setSize(AREA * cols, AREA * rows);
-		setLocation(0, 0);
-		// setSize(AREA, AREA);
+                
+                
+		this.setLocation(800, 1000);
+                
+		 setSize(rows*AREA, cols*AREA);
 		explosionMatrix = new int[rows][cols];
+                
+                System.out.println("iiiiiiii");
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				System.out.print(explosionMatrix[i][j]);
+			}
+			System.out.println("");
+		}
+                
+                
+                //mostrar
+                explosionMatrix = archive.getArcMatrix();
+
 	}
 	
 	
@@ -54,6 +70,55 @@ public class GameCanvas extends Canvas {
 			}
 		}
 		
+		
+
+		// Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
+
+		//ImageIcon iconShot = new ImageIcon("images/explosion.png");
+		// Prepare anImage object to be used by drawImage()
+
+		//final Image img = icon.getImage();
+		//final Image imgShot = iconShot.getImage();
+		//this.oque();
+		
+		/*
+		 * 0 = agua 
+		 * 1 = embarcação 1  
+		 * 2 = embarcação 2
+		 * 3 = embarcação 3
+		 * 4 = embarcação 4 
+		 * 5 = embarcação 5
+		 * 6 = tiro na agua
+		 */
+
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				//g.drawImage(img, i, j, AREA, AREA, null);
+				if (explosionMatrix[i][j] == 0) {
+					g.setColor(new Color(131, 209, 232));
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				} else if (explosionMatrix[i][j] == 1) {
+					g.setColor(Color.WHITE);
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				} else if (explosionMatrix[i][j] == 2) {
+					g.setColor(Color.PINK);
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}else if (explosionMatrix[i][j] == 3) {
+					g.setColor(Color.BLACK);
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}else if (explosionMatrix[i][j] == 4) {
+					g.setColor(Color.GREEN);
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}else if (explosionMatrix[i][j] == 5) {
+					g.setColor(Color.YELLOW);
+					g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}else if (explosionMatrix[i][j] == 6) {
+                                    g.setColor(new Color(32, 156, 185));
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+				}
+			}
+
+		}
 		g.setColor(Color.white);
 		g.drawRect(0, 0, rows * AREA, cols * AREA);
 
@@ -64,32 +129,7 @@ public class GameCanvas extends Canvas {
 
 			}
 		}
-
-		// Prepare an ImageIcon ImageIcon icon = new ImageIcon("images/ondas_1.jpg");
-
-		//ImageIcon iconShot = new ImageIcon("images/explosion.png");
-		// Prepare anImage object to be used by drawImage()
-
-		//final Image img = icon.getImage();
-		//final Image imgShot = iconShot.getImage();
-		//this.oque();
-
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				//g.drawImage(img, i, j, AREA, AREA, null);
-				if (explosionMatrix[i][j] == 0) {
-					g.setColor(Color.white);
-
-					g.fillRect(i*AREA, j*AREA, AREA,AREA);
-				}
-			}
-
-		}
 		
-
-	}
-
-	public void changeMatrix(int i, int j, GameCanvas canvas) {
 
 	}
 
@@ -120,19 +160,20 @@ public class GameCanvas extends Canvas {
 	public int[][] getExplosionMatrix() {
 		return explosionMatrix;
 	}
+	
 
 	public void setExplosionMatrix(int[][] explosionMatrix) {
 		this.explosionMatrix = explosionMatrix;
 	}
 
-	/*public void oque() {
-		System.out.println("");
+	public void oque() {
+		System.out.println("iiiiiiii");
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				System.out.print(explosionMatrix[i][j]);
 			}
 			System.out.println("");
 		}
-	}*/
+	}
 
 }

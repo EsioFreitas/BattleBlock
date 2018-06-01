@@ -87,9 +87,6 @@ public class RuleJFrame extends javax.swing.JFrame {
             ArcMap archive = new ArcMap(path);
             Board board = new Board(archive);
             new GameFrame(archive).setVisible(true);
-          //  new GameFrame(archive).setVisible(true);
-            GameCanvas canvas = new GameCanvas(archive);
-           
             
             
            
