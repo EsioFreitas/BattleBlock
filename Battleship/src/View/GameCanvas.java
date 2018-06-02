@@ -31,8 +31,8 @@ public class GameCanvas extends Canvas {
 
 	public GameCanvas(ArcMap archive) {
 		this.achive = archive;
-		this.rows = archive.getArcHeight();
-		this.cols = archive.getArcWidth();
+		this.rows = archive.getArcWidth();
+		this.cols = archive.getArcHeight();
 		
 		setSize(AREA * cols, AREA * rows);
                 
@@ -52,7 +52,7 @@ public class GameCanvas extends Canvas {
                 
                 
                 //mostrar
-                explosionMatrix = archive.getArcMatrix();
+                //explosionMatrix = archive.getArcMatrix();
 
 	}
 	
@@ -61,14 +61,7 @@ public class GameCanvas extends Canvas {
 	// @Override
 	public void paint(Graphics g) {
 
-		g.setColor(new Color(131, 209, 232));
 		
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				g.fillRect(i*AREA, j*AREA, AREA,AREA);
-
-			}
-		}
 		
 		
 

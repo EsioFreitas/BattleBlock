@@ -78,9 +78,10 @@ public class GameFrame extends JFrame {
 				int y_pos = y / canvas.AREA;
 				
 				int opc = archve.getPosition(canvas.getExplosionMatrix(), x_pos, y_pos);
-				
-				if (opc == 1) {
-					player.setShot(x_pos, y_pos);
+				                        System.out.println("quero esse aqui");
+                                                        System.out.println(opc);
+				if (opc > 0) {
+					player.shot(x_pos, y_pos);
 				} else if  (opc == 0){
 					player.waterShot(x_pos, y_pos);
 				}
@@ -98,7 +99,6 @@ public class GameFrame extends JFrame {
 				
 				//
                                 
-                                canvas.oque();
 
 			}
 

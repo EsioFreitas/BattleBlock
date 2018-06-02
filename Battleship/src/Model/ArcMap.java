@@ -107,9 +107,9 @@ public class ArcMap {
 			System.out.println("");
 		}
 	}
-	
+	//mudei aqui 
 	public int getPosition(int[][] matrix, int x, int y) {
-		matrix[x][y] = arcMatrix[x][y];
+		matrix[x][y] = arcMatrix[y][x];
 		return matrix[x][y];
 
 	}

@@ -40,7 +40,7 @@ public class Player {
     }
     
   
-    public void setShot(int x, int y) {
+    public void shot(int x, int y) {
 		explosionMatrix[x][y] = 1;
 
     }
@@ -49,25 +49,25 @@ public class Player {
 
     }
     
-    public void setPowerSee(int x, int y) {
+    public void powerSee(int x, int y) {
         explosionMatrix[x][y] = 1;
     }
     
-    public void setPowerDestroy2x2(int x, int y) {
+    public void powerDestroy2x2(int x, int y) {
         explosionMatrix[x][y] = 1;
         explosionMatrix[x+1][y] = 1;
         explosionMatrix[x+1][y+1] = 1;
         explosionMatrix[x][y+1] = 1;
     }
     
-    public void setPowerDestroyRow(int x, int y) {
+    public void powerDestroyRow(int x, int y) {
         for(int i =0; i<canvas.getRows(); i++){
             explosionMatrix[i][y] = 1;
 
         }
     }
     
-    public void setPowerDestroyCol(int x, int y) {
+    public void powerDestroyCol(int x, int y) {
         for(int j=0; j<canvas.getCols();j++){
             explosionMatrix[x][j] = 1;
 
