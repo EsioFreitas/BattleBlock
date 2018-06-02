@@ -3,7 +3,7 @@ package Controller;
 
 import java.awt.Point;
 
-public class Spacecraft {
+public class Block {
     
         public static final int FIRSTSPACECRAFT = 1;
 	public static final int SECONDSPACECRAFT = 2;
@@ -14,23 +14,23 @@ public class Spacecraft {
         private int size; 
         private int id;
         
-        private Spacecraft(int size, int id){
+        private Block(int size, int id){
             this.size = size;
             this.id = id;
         }
         
-        public static Spacecraft buildSpacecraft(int id){
+        public static Block buildSpacecraft(int id){
             switch(id){
                 case FIRSTSPACECRAFT:
-                    return new Spacecraft(1,1);
+                    return new Block(1,1);
                 case SECONDSPACECRAFT:
-                    return new Spacecraft(2, 2);
+                    return new Block(2, 2);
                 case THIRDSPACECRAFT:
-                    return new Spacecraft(3, 3);
+                    return new Block(3, 3);
                 case FOURTHSPACECRAFT:
-                    return new Spacecraft(4, 4);
+                    return new Block(4, 4);
                 case FIVETHSPACECRAFT:
-                    return new Spacecraft(5, 5);
+                    return new Block(5, 5);
                 default:
                     return null; 
             }

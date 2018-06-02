@@ -40,9 +40,12 @@ public class Player {
     }
     
   
-    public void shot(int x, int y) {
-		explosionMatrix[x][y] = 1;
+    public int shot(int x, int y) {
+        return explosionMatrix[x][y];
 
+    }
+    public int Attention(int x, int y) {
+            return explosionMatrix[x][y] = 7;
     }
     public void waterShot(int x, int y) {
 		explosionMatrix[x][y] = 6;

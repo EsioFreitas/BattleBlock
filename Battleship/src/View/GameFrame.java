@@ -1,7 +1,7 @@
 
-/*Ativar tiros -- hj
- *Descontar recursos -- amanha
- *Finalizar jogo -- sab 
+/*Ativar tiros -- hj            ok
+ *Descontar recursos -- amanha   
+ *Finalizar jogo -- sab        
  *pontuar -- sab 
  *rank  -- dom 
  *artes -- segunda 
@@ -26,9 +26,13 @@ import Controller.Thread.CanvasThread;
 import Controller.Player;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Locale;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicArrowButton;
 
 public class GameFrame extends JFrame {
     
@@ -55,16 +59,51 @@ public class GameFrame extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Stellar Battle");
 		setResizable(false);
-		setSize(AREA * width,AREA * hight);
+		setSize(100+AREA * width, canvas.AREA * hight);
 		setLocationRelativeTo(null);
+                
+                
+                
+                
+                JButton shotButton = new JButton("Shot");
+                JButton powerDestroy2x2Button = new JButton("Destroy 2x2");
+                JButton powerDestroyRowButton = new JButton("Destroy Row");
+                JButton powerDestroyColButton = new JButton("Destroy Col");
+                JButton powerSeeButton = new JButton("See 2x2");
+                
+                JLabel shotLabel = new JLabel("You have: 0");
+                JLabel powerDestroy2x2Label = new JLabel("You have: 1");
+                JLabel powerDestroyRowLabel = new JLabel("You have: 2");
+                JLabel powerDestroyColLabel = new JLabel("You have: 3");
+                JLabel powerSeeLabel = new JLabel("You have: 4");
+                
+                JPanel choosePowers = new JPanel(new GridLayout(5,2)); 
+                
+                choosePowers.add(shotLabel);
+                                choosePowers.add(shotButton);
+
+                choosePowers.add(powerDestroy2x2Label);
+                                choosePowers.add(powerDestroy2x2Button);
+
+                choosePowers.add(powerDestroyRowLabel);
+                                choosePowers.add(powerDestroyRowButton);
+
+                choosePowers.add(powerDestroyColLabel);
+                                choosePowers.add(powerDestroyColButton);
+
+                choosePowers.add(powerSeeLabel);
+                
+                choosePowers.add(powerSeeButton);
                 
           
                 
                 getContentPane().add(BorderLayout.CENTER, canvas);
+                getContentPane().add(BorderLayout.EAST, choosePowers);
 
 
 
 		repaintThread = new CanvasThread(canvas);
+                
 		repaintThread.start();
 		canvas.addMouseListener(new MouseListener() {
 
@@ -78,12 +117,36 @@ public class GameFrame extends JFrame {
 				int y_pos = y / canvas.AREA;
 				
 				int opc = archve.getPosition(canvas.getExplosionMatrix(), x_pos, y_pos);
+                                
 				                        System.out.println("quero esse aqui");
                                                         System.out.println(opc);
+                                                        
+                                int board1;
+                                int board2;
+                                int board3;
+                                int board4;
+                                int board5;
+                                
 				if (opc > 0) {
-					player.shot(x_pos, y_pos);
-				} else if  (opc == 0){
-					player.waterShot(x_pos, y_pos);
+                                    //player.Attention(x_pos, y_pos);
+                                    player.shot(x_pos, y_pos);
+                                    switch (opc) {
+                                        case 1:
+                                            //player.power 
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                        case 4:
+                                            break;
+                                        case 5:
+                                            break;
+                                        default:
+                                            break;
+                                    }
+				}else{
+                                    player.waterShot(x_pos, y_pos);
 				}
 				//mudar(x y canvas)
 				

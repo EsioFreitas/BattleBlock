@@ -113,9 +113,14 @@ public class GameCanvas extends Canvas {
                                     g.fillRect(i*AREA, j*AREA, AREA,AREA);
                                     break;
                                 case 6:
-                                    g.setColor(new Color(32, 156, 185));
+                                    g.setColor(new Color(0, 139, 139));
                                     g.fillRect(i*AREA, j*AREA, AREA,AREA);
                                     break;
+                                case 7:
+                                    g.setColor(new Color(85, 185, 218));
+                                    g.fillRect(i*AREA, j*AREA, AREA,AREA);
+                                    break;
+                                    
                                 default:
                                     break;
                             }
@@ -132,17 +137,9 @@ public class GameCanvas extends Canvas {
 
 			}
 		}
-		
-
 	}
 
-	public void setShot(int x, int y) {
-		explosionMatrix[x][y] = 1;
-	}
 
-	public int getShot(int x, int y) {
-		return explosionMatrix[x][y];
-	}
 
 	public int getRows() {
 		return rows;
