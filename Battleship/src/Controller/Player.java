@@ -45,9 +45,9 @@ public class Player {
     }
     
     public int amountShots() {
-    	float shots = fleet*1.5f;
-    	int totalWeapon = (int)shots;
-        this.amauntShots = totalWeapon;
+    	int shots = fleet*2;
+        this.amauntShots = shots;
+        
         return amauntShots;
     }
     
