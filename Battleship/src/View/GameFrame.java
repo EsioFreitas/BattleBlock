@@ -57,7 +57,7 @@ public class GameFrame extends JFrame {
 		this.hight = archive.getArcHeight();
 		
 		canvas = new GameCanvas(archive);
-		player = new Player(archve, canvas);
+		player = new Player(archve, canvas, this);
                 choosePowersPanel = new ChoosePowersPanel(player);
                 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,18 +72,10 @@ public class GameFrame extends JFrame {
                 }
 		setLocationRelativeTo(null);
                 
-                JLabel text = new JLabel(", your core is: ");
-
                 
-                JPanel flow = new JPanel(new FlowLayout());
-                flow.add(choosePowersPanel);
-                
-                JPanel rightGame = new JPanel(new BorderLayout());
-                rightGame.add(BorderLayout.CENTER, text);
-                rightGame.add(BorderLayout.SOUTH, flow);
                 
                 getContentPane().add(BorderLayout.WEST, canvas);
-                getContentPane().add(BorderLayout.EAST, rightGame);
+                getContentPane().add(BorderLayout.EAST, choosePowersPanel);
 
 
 
@@ -118,6 +110,7 @@ public class GameFrame extends JFrame {
                                 
                                player.shot(x_pos, y_pos);
                                choosePowersPanel.loadLabel(player.getId());
+                               
                                 
                                 //player.powerSee(x_pos, y_pos);
                                 

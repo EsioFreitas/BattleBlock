@@ -1,8 +1,9 @@
 package View;
 
-import Controller.Game;
 import Controller.Player;
+import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -23,13 +24,12 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     JLabel powerDestroy2x2Label = new JLabel();
     JLabel powerDestroyRowLabel = new JLabel();
     JLabel powerDestroyColLabel = new JLabel();
-    JLabel powerSeeLabel = new JLabel("You have: 4");
+    JLabel powerSeeLabel = new JLabel();
     
     private Player player;
     
-    private String nome; 
+    private String name; 
     private int pointers;
-    private Game game;
     
     private int id = 0;
     
@@ -44,6 +44,8 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     public ChoosePowersPanel(Player player) {
         
         this.player = player;
+        this.pointers = player.getPointers();
+        this.name = player.getName();
         amauntShots = player.amountShots();
         amauntpowerDestroy2x2 = player.getAmauntpowerDestroy2x2();
         amauntpowerDestroyRow = player.getAmauntpowerDestroyRow();
@@ -73,7 +75,15 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
         add(powerSeeButton);
         powerSeeButton.addActionListener(this);
         
-       
+       /*JLabel text = new JLabel(player.getName()+", your core is: "+player.getPointers());
+           
+        JPanel flow = new JPanel(new FlowLayout());
+        //flow.add(this);
+
+        JPanel rightGame = new JPanel(new BorderLayout());
+
+        rightGame.add(BorderLayout.CENTER, text);
+        rightGame.add(BorderLayout.SOUTH, flow);*/
         
         shotLabel.setText("You have: "+amauntShots);
         powerDestroy2x2Label.setText("You have: "+amauntpowerDestroy2x2);
@@ -115,6 +125,7 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
                         shotLabel.setText("You have: "+amauntShots);
                         System.out.println("muda aqu");
                         player.setAmauntShots(amauntShots);
+                        
                     break;
                     
                 case 1:
@@ -150,21 +161,15 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
                         powerSeeLabel.setText("Without powers");
                     }else 
                         powerSeeLabel.setText("You have: "+amauntpowerSee);
-                    player.setAmauntpowerSee(amauntpowerSee);
-                    break;
+                        player.setAmauntpowerSee(amauntpowerSee);
+                        break;
                 default:
                     break;
             }
       
     }
         
-    public void andGame(int andGame){
-        if(amauntShots <= 0 && amauntpowerDestroy2x2 <= 0 && amauntpowerDestroyCol<=0 && amauntpowerDestroyRow <=0 && amauntpowerSee <= 0){
-            andGame = Game.GAMEOVER;
-            game.status(andGame);
-        }
-    }
-    
+
 
 
     public void setId(int id) {

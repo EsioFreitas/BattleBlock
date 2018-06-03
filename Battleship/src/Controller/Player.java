@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import Model.ArcMap;
 import View.ChoosePowersPanel;
 import View.GameCanvas;
+import View.GameFrame;
+import View.WinnerFrame;
 
 public class Player {
     
@@ -16,6 +18,8 @@ public class Player {
     private ArcMap archive;
     private GameCanvas canvas;
     private ChoosePowersPanel choose;
+    private GameFrame gameFrame;
+
     
     private int[][] explosionMatrix;
     
@@ -34,10 +38,12 @@ public class Player {
     private int amauntpowerDestroyRow = 1;
     private int amauntpowerDestroyCol = 1;
     private int amauntpowerSee = 1;
+    private int weapons; 
     
      
     
-    public Player(ArcMap archive, GameCanvas canvas){
+    public Player(ArcMap archive, GameCanvas canvas, GameFrame gameFrame){
+      this.gameFrame = gameFrame;
       this.archive = archive;
       this.fleet = archive.getArcFleet();
       this.canvas = canvas; 
@@ -46,11 +52,18 @@ public class Player {
     
     public int amountShots() {
     	int shots = fleet*2;
-        this.amauntShots = shots;
+        this.amauntShots = shots-5;
         
         return amauntShots;
     }
-    
+    //
+    public void gameOver(){
+        this.weapons = amauntShots+amauntpowerDestroy2x2+amauntpowerDestroyCol+amauntpowerDestroyRow+amauntpowerSee;
+        if(this.weapons <= 0){
+            gameFrame.dispose();
+            new WinnerFrame().setVisible(true);
+        }
+    }
     //
     
     public void shot(int x, int y){
@@ -58,30 +71,33 @@ public class Player {
             case 0: 
                 if(amauntShots <= 0){
                     System.out.println("ddddd");
+                    gameOver();
                 }else
                     shotBlock(x, y);
+                    
                     break;
             case 1:
                 if(amauntpowerDestroy2x2 <= 0){
                     System.out.println("doooooont");
+                    gameOver();
                 }else 
                     powerDestroy2x2(x, y);
                     break;
             case 2:
                 if(amauntpowerDestroyRow <=0){
-                    
+                    gameOver();
                 }else
                     powerDestroyRow(x, y);
                     break;
             case 3: 
                 if(amauntpowerDestroyCol <=0){
-                    
+                   gameOver(); 
                 }else
                     powerDestroyCol(x, y);
                     break;
             case 4:
                 if(amauntpowerSee <= 0){
-                    
+                    gameOver();
                 }else
                     powerSee(x, y);
                     break;
@@ -90,11 +106,7 @@ public class Player {
         }
     }
     
-    public int playerPoints(){
-        
-        return 0;
-    }
-    
+
   
     public void shotBlock(int x, int y) {
         amauntShots -= 1;
@@ -102,7 +114,7 @@ public class Player {
             explosionMatrix[x][y] = 6;
         } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
-            playerPoints();
+            
         }
 
     }
