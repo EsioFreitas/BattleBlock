@@ -44,6 +44,7 @@ public class Player {
     private int amauntpowerDestroyCol = 1;
     private int amauntpowerSee = 1;
     private int weapons; 
+    private int amoutBlokcs;
     
     private int contBlock1;
     private int contBlock2;
@@ -78,23 +79,6 @@ public class Player {
         return amauntShots;
     }
     
-    public void playerScore(){
-        this.pointers = contBlock1*block1.getPoint()+contBlock2*block2.getPoint()+contBlock3*block3.getPoint()+contBlock4*block4.getPoint()+contBlock5*block5.getPoint();
-    }
-    //
-    public void gameOver(){
-        this.weapons = amauntShots+amauntpowerDestroy2x2+amauntpowerDestroyCol+amauntpowerDestroyRow+amauntpowerSee;
-        if(this.weapons <= 0){
-            
-                gameFrame.dispose();
-                new LoserFrame(this).setVisible(true);
-            }else{
-                //gameFrame.dispose();
-                //new WinnerFrame().setVisible(true);
-            }
-            
-        
-    }
     
 
     
@@ -140,27 +124,7 @@ public class Player {
         }
     }
     
-    public void checkPointBlock(int[][] explosionMatrix, int x, int y){
-        switch (explosionMatrix[x][y]) {
-            case 1:
-                contBlock1++;
-                break;
-            case 2:
-                contBlock2++;
-                break;
-            case 3:
-                contBlock3++;
-                break;
-            case 4:
-                contBlock4++;
-                break;
-            case 5:
-                contBlock5++;
-                break;
-            default:
-                break;
-        }
-    }
+    
   
     public void shotBlock(int x, int y) {
         amauntShots -= 1;
@@ -169,6 +133,7 @@ public class Player {
         } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
             checkPointBlock(explosionMatrix, x, y);
+            amoutBlokcs++;
         }
 
     }
@@ -210,6 +175,7 @@ public class Player {
         } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
             checkPointBlock(explosionMatrix, x, y);
+            amoutBlokcs++;
         }
 
         if(archive.getPosition(explosionMatrix, x+1, y) == 0){
@@ -217,6 +183,7 @@ public class Player {
         } else{
             explosionMatrix[x+1][y] = archive.getPosition(explosionMatrix, x+1, y);
             checkPointBlock(explosionMatrix, x+1, y);
+            amoutBlokcs++;
         }
 
         
@@ -225,6 +192,7 @@ public class Player {
         } else{
             explosionMatrix[x+1][y+1] = archive.getPosition(explosionMatrix, x+1, y+1);
             checkPointBlock(explosionMatrix, x+1, y+1);
+            amoutBlokcs++;
         }
 
         
@@ -233,6 +201,7 @@ public class Player {
         } else{
             explosionMatrix[x][y+1] = archive.getPosition(explosionMatrix, x, y+1);
             checkPointBlock(explosionMatrix, x, y+1);
+            amoutBlokcs++;
         }
             
     }
@@ -242,6 +211,8 @@ public class Player {
         for(int i =0; i<canvas.getRows(); i++){
             if(archive.getPosition(explosionMatrix, i, y) > 0){
                 explosionMatrix[i][y] = archive.getPosition(explosionMatrix, i, y);
+                checkPointBlock(explosionMatrix, i, y);
+                amoutBlokcs++;
             } else
                 explosionMatrix[i][y] = 6;
         }
@@ -254,6 +225,8 @@ public class Player {
         for(int j=0; j<canvas.getCols();j++){
             if(archive.getPosition(explosionMatrix, x, j) > 0){
                 explosionMatrix[x][j] = archive.getPosition(explosionMatrix, x, j);
+                checkPointBlock(explosionMatrix, x, j);
+                amoutBlokcs++;
             } else
                 explosionMatrix[x][j] = 6;
             
@@ -262,6 +235,75 @@ public class Player {
                 
 
     }
+
+    //
+    //Não esta impedido de contabilizar o contator. vc clica e ele continua contando
+    public void checkPointBlock(int[][] explosionMatrix, int x, int y){
+        
+        int [][] tem = new int[archive.getArcWidth()][archive.getArcHeight()];
+        tem[x][y] = 1;
+        if(tem[x][y] == 1){
+            tem[x][y] = 2;
+            switch (explosionMatrix[x][y]) {
+                
+                case 1:
+                    pointers += block1.getPoint();
+                    tem[x][y] = 2;
+                    System.out.println(pointers);
+                    break;
+                case 2:
+                    pointers += block2.getPoint();
+                    tem[x][y] = 2;
+                    System.out.println(pointers);
+                    break;
+                case 3:
+                    pointers += block3.getPoint();
+                    tem[x][y] = 2;
+                    System.out.println(pointers);
+                    break;
+                case 4:
+                    pointers += block4.getPoint();
+                    tem[x][y] = 2;
+                    System.out.println(pointers);
+                    break;
+                case 5:
+                    pointers += block5.getPoint();
+                    tem[x][y] =2;
+                    System.out.println(pointers);
+                    break;
+                default:
+                    tem[x][y] = 2;
+                    break;
+            }
+                        tem[x][y] = 2;
+
+        } 
+        
+        tem[x][y] = 2;
+        
+    }
+
+        public void gameOver(){
+        this.weapons = amauntShots+amauntpowerDestroy2x2+amauntpowerDestroyCol+amauntpowerDestroyRow+amauntpowerSee;
+        if(this.weapons <= 0){
+            if(amoutBlokcs>=archive.getArcAmountBlocks()){
+                gameFrame.dispose();
+                new WinnerFrame().setVisible(true);
+                
+            }else{
+                gameFrame.dispose();
+                new LoserFrame(this).setVisible(true);
+                
+            }
+                
+                
+        }
+                
+            
+            
+        
+    }
+    
 
     public String getName() {
         return name;

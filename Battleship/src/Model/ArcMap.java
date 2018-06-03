@@ -18,6 +18,7 @@ public class ArcMap {
 	private int arcFourthShip;
 	private int arcFivethShip;
 	private int arcFleet;
+        private int arcAmountBlocks;
 
 
 	private int var;
@@ -99,12 +100,15 @@ public class ArcMap {
 		arcFleet = getArcFirstShip()+getArcSecondShip()+getArcThirdShip()+getArcFourthShip()+getArcFivethShip();
 		System.out.println(arcFleet+"eeeeeeeeeeeeee'");
                 
-                System.out.println("");
+                
+                ;
 		for (int i = 0; i < arcHeight; i++) {
 			for (int j = 0; j < arcWidth; j++) {
-				System.out.print(arcMatrix[i][j]);
+                            if(arcMatrix[i][j] == 1 ||arcMatrix[i][j] == 2 ||arcMatrix[i][j] == 3 ||arcMatrix[i][j] == 4 ||arcMatrix[i][j] == 5 ){
+                                arcAmountBlocks++;
+                            }
 			}
-			System.out.println("");
+			System.out.println(arcAmountBlocks+"ee");
 		}
 	}
 	//mudei aqui 
@@ -150,6 +154,10 @@ public class ArcMap {
 		return arcMatrix;
 	}
 
-	 
+    public int getArcAmountBlocks() {
+        return arcAmountBlocks;
+    }
+
+	
 
 }
