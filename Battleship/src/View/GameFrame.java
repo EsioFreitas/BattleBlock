@@ -3,7 +3,7 @@
  *Descontar recursos -- amanha   
  *Finalizar jogo -- sab        
  *pontuar -- sab 
- *rank  -- dom 
+ *rank  -- dom  arrumr botao
  *artes -- segunda 
  * */
 
@@ -117,6 +117,8 @@ public class GameFrame extends JFrame {
                                 
                                 
                                 player.shot(x_pos, y_pos);
+                               choosePowersPanel.loadLabel(player.getId());
+                                
                                 //player.powerSee(x_pos, y_pos);
                                 
 				/*if (opc > 0) {

@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ChoosePowersPanel extends JPanel implements ActionListener{
+public class ChoosePowersPanel extends JPanel implements ActionListener {
 
     JButton shotButton = new JButton("Shot");
     JButton powerDestroy2x2Button = new JButton("Destroy 2x2");
@@ -18,10 +18,10 @@ public class ChoosePowersPanel extends JPanel implements ActionListener{
     JButton powerDestroyColButton = new JButton("Destroy Col");
     JButton powerSeeButton = new JButton("See 2x2");
 
-    JLabel shotLabel = new JLabel("You have: 0");
-    JLabel powerDestroy2x2Label = new JLabel("You have: 1");
-    JLabel powerDestroyRowLabel = new JLabel("You have: 2");
-    JLabel powerDestroyColLabel = new JLabel("You have: 3");
+    JLabel shotLabel = new JLabel();
+    JLabel powerDestroy2x2Label = new JLabel();
+    JLabel powerDestroyRowLabel = new JLabel();
+    JLabel powerDestroyColLabel = new JLabel();
     JLabel powerSeeLabel = new JLabel("You have: 4");
     
     private Player player;
@@ -29,8 +29,9 @@ public class ChoosePowersPanel extends JPanel implements ActionListener{
     private String nome; 
     private int pointers; 
     
+    private int id = 0;
+    
     private int amauntShots;
-    private int power;
     private int amauntpowerDestroy2x2;
     private int amauntpowerDestroyRow;
     private int amauntpowerDestroyCol;
@@ -39,8 +40,9 @@ public class ChoosePowersPanel extends JPanel implements ActionListener{
     
 
     public ChoosePowersPanel(Player player) {
+        
         this.player = player;
-        amauntShots = player.getAmauntShots();
+        amauntShots = player.amountShots();
         amauntpowerDestroy2x2 = player.getAmauntpowerDestroy2x2();
         amauntpowerDestroyRow = player.getAmauntpowerDestroyRow();
         amauntpowerDestroyCol = player.getAmauntpowerDestroyCol();
@@ -50,29 +52,48 @@ public class ChoosePowersPanel extends JPanel implements ActionListener{
 
         add(shotLabel);
         add(shotButton);
+        shotButton.addActionListener(this);
 
         add(powerDestroy2x2Label);
         add(powerDestroy2x2Button);
+        powerDestroy2x2Button.addActionListener(this);
+
 
         add(powerDestroyRowLabel);
         add(powerDestroyRowButton);
+        powerDestroyRowButton.addActionListener(this);
 
         add(powerDestroyColLabel);
         add(powerDestroyColButton);
+        powerDestroyColButton.addActionListener(this);
 
         add(powerSeeLabel);
         add(powerSeeButton);
+        powerSeeButton.addActionListener(this);
+        
+       
+        
+        shotLabel.setText("You have: "+amauntShots);
+        powerDestroy2x2Label.setText("You have: "+amauntpowerDestroy2x2);
+        powerDestroyColLabel.setText("You have: "+amauntpowerDestroyCol);
+        powerDestroyRowLabel.setText("You have: "+amauntpowerDestroyRow);
+        powerSeeLabel.setText("You have: "+amauntpowerSee);
     }
-
+    
+    
+    
+   
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == shotButton){
-            player.setId(player.DESTROY1X1); 
+            player.setId(player.DESTROY1X1);
+            amauntShots -= 1;
+            System.out.println("pooois");            
         } else if(e.getSource() == powerDestroy2x2Button){
            player.setId(player.DESTROY2X2); 
+           amauntpowerDestroy2x2 -= 1;
         }else if(e.getSource() == powerDestroyRowButton){
             player.setId(player.DESTROYROW);
-            System.out.println("ooi");
         }else if(e.getSource() == powerDestroyColButton){
             player.setId(player.DESTROYCOL);
         }else if(e.getSource() == powerSeeButton){
@@ -80,11 +101,69 @@ public class ChoosePowersPanel extends JPanel implements ActionListener{
         }
     }
     
-    private void powerDestroy2x2Button(java.awt.event.ActionEvent evt) {
-        player.setId(player.DESTROY2X2); 
-        System.out.println("oi");
-        
+        public void loadLabel(int id){
+            
+            switch(id){
+                case 0:
+                    
+                    this.amauntShots -= 1;
+                    if(amauntShots <= 0){
+                        shotLabel.setText("Without powers");
+                    }else 
+                        shotLabel.setText("You have: "+amauntShots);
+                        System.out.println("muda aqu");
+                        player.setAmauntShots(amauntShots);
+                    break;
+                    
+                case 1:
+                    this.amauntpowerDestroy2x2 = player.getAmauntpowerDestroy2x2();
+                    if(amauntpowerDestroy2x2 <= 0){
+                        powerDestroy2x2Label.setText("Without powers");
+                    }else 
+                        powerDestroy2x2Label.setText("You have: "+amauntpowerDestroy2x2);
+                        player.setAmauntpowerDestroy2x2(amauntpowerDestroy2x2);
+                    break;
+                    
+                case 2:
+                    this.amauntpowerDestroyRow = player.getAmauntpowerDestroyRow();
+                    if(amauntpowerDestroyRow <= 0){
+                        powerDestroyRowLabel.setText("Without powers");
+                    }else 
+                        powerDestroyRowLabel.setText("You have: "+amauntpowerDestroyRow);
+                        player.setAmauntpowerDestroyRow(amauntpowerDestroyRow);
+                    break;
+                    
+                case 3:
+                    this.amauntpowerDestroyCol = player.getAmauntpowerDestroyCol();
+                    if(amauntpowerDestroyCol <= 0){
+                        powerDestroyColLabel.setText("Without powers");
+                    }else 
+                        powerDestroyColLabel.setText("You have: "+amauntpowerDestroyCol);
+                        player.setAmauntpowerDestroyCol(amauntpowerDestroyCol);
+                    break;
+                    
+                case 4:
+                    this.amauntpowerSee = player.getAmauntpowerSee();
+                    if(amauntpowerSee <= 0){
+                        powerSeeLabel.setText("Without powers");
+                    }else 
+                        powerSeeLabel.setText("You have: "+amauntpowerSee);
+                    player.setAmauntpowerSee(amauntpowerSee);
+                    break;
+                default:
+                    break;
+            }
+            
+            
+            
+            
+            
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     
     

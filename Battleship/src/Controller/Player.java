@@ -30,7 +30,6 @@ public class Player {
     private int id = 0;
     
     private int amauntShots;
-    private int power;
     private int amauntpowerDestroy2x2 = 1;
     private int amauntpowerDestroyRow = 1;
     private int amauntpowerDestroyCol = 1;
@@ -45,10 +44,11 @@ public class Player {
       this.explosionMatrix = canvas.getExplosionMatrix();     
     }
     
-    public void amountShots() {
+    public int amountShots() {
     	float shots = fleet*1.5f;
     	int totalWeapon = (int)shots;
         this.amauntShots = totalWeapon;
+        return amauntShots;
     }
     
     //
@@ -56,25 +56,35 @@ public class Player {
     public void shot(int x, int y){
         switch(id){
             case 0: 
-                shotBlock(x, y);
-                amauntShots -= 1;
-                break;
+                if(amauntShots == 0){
+                    
+                }else
+                    shotBlock(x, y);
+                    break;
             case 1:
-                powerDestroy2x2(x, y);
-                amauntpowerDestroy2x2 -= 1;
-                break;
+                if(amauntpowerDestroy2x2 == 0){
+                    System.out.println("doooooont");
+                }else 
+                    powerDestroy2x2(x, y);
+                    break;
             case 2:
-                powerDestroyRow(x, y);
-                amauntpowerDestroyRow -= 1;
-                break;
+                if(amauntpowerDestroyRow ==0){
+                    
+                }else
+                    powerDestroyRow(x, y);
+                    break;
             case 3: 
-                powerDestroyCol(x, y);
-                amauntpowerDestroyCol-= 1;
-                break;
-            case 4: 
-                powerSee(x, y);
-                amauntpowerSee -= 1;
-                break;
+                if(amauntpowerDestroyCol ==0){
+                    
+                }else
+                    powerDestroyCol(x, y);
+                    break;
+            case 4:
+                if(amauntpowerSee == 0){
+                    
+                }else
+                    powerSee(x, y);
+                    break;
             default:
                 break;
         }
@@ -82,6 +92,7 @@ public class Player {
     
   
     public void shotBlock(int x, int y) {
+        amauntShots -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 6;
         } else
@@ -97,6 +108,7 @@ public class Player {
     }
     
     public void powerSee(int x, int y) {
+        amauntpowerSee -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 0;
         } else
@@ -119,6 +131,7 @@ public class Player {
     }
     
     public void powerDestroy2x2(int x, int y) {
+        amauntpowerDestroy2x2 -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 6;
         } else
@@ -141,6 +154,7 @@ public class Player {
     }
     
     public void powerDestroyRow(int x, int y) {
+        amauntpowerDestroyRow -= 1;
         for(int i =0; i<canvas.getRows(); i++){
             if(archive.getPosition(explosionMatrix, i, y) > 0){
                 explosionMatrix[i][y] = archive.getPosition(explosionMatrix, i, y);
@@ -152,23 +166,74 @@ public class Player {
     }
     
     public void powerDestroyCol(int x, int y) {
+        amauntpowerDestroyCol -= 1;
         for(int j=0; j<canvas.getCols();j++){
             if(archive.getPosition(explosionMatrix, x, j) > 0){
                 explosionMatrix[x][j] = archive.getPosition(explosionMatrix, x, j);
             } else
                 explosionMatrix[x][j] = 6;
+            
 
         }
-    }
+                
 
+    }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getPointers() {
         return pointers;
-    }   
+    }
+
+    public void setPointers(int pointers) {
+        this.pointers = pointers;
+    }
+
+    public ArcMap getArchive() {
+        return archive;
+    }
+
+    public void setArchive(ArcMap archive) {
+        this.archive = archive;
+    }
+
+    public GameCanvas getCanvas() {
+        return canvas;
+    }
+
+    public void setCanvas(GameCanvas canvas) {
+        this.canvas = canvas;
+    }
+
+    public ChoosePowersPanel getChoose() {
+        return choose;
+    }
+
+    public void setChoose(ChoosePowersPanel choose) {
+        this.choose = choose;
+    }
+
+    public int[][] getExplosionMatrix() {
+        return explosionMatrix;
+    }
+
+    public void setExplosionMatrix(int[][] explosionMatrix) {
+        this.explosionMatrix = explosionMatrix;
+    }
+
+    public int getFleet() {
+        return fleet;
+    }
+
+    public void setFleet(int fleet) {
+        this.fleet = fleet;
+    }
 
     public int getId() {
         return id;
@@ -177,6 +242,48 @@ public class Player {
     public void setId(int id) {
         this.id = id;
     }
+
+    public int getAmauntShots() {
+        return amauntShots;
+    }
+
+    public void setAmauntShots(int amauntShots) {
+        this.amauntShots = amauntShots;
+    }
+
+    public int getAmauntpowerDestroy2x2() {
+        return amauntpowerDestroy2x2;
+    }
+
+    public void setAmauntpowerDestroy2x2(int amauntpowerDestroy2x2) {
+        this.amauntpowerDestroy2x2 = amauntpowerDestroy2x2;
+    }
+
+    public int getAmauntpowerDestroyRow() {
+        return amauntpowerDestroyRow;
+    }
+
+    public void setAmauntpowerDestroyRow(int amauntpowerDestroyRow) {
+        this.amauntpowerDestroyRow = amauntpowerDestroyRow;
+    }
+
+    public int getAmauntpowerDestroyCol() {
+        return amauntpowerDestroyCol;
+    }
+
+    public void setAmauntpowerDestroyCol(int amauntpowerDestroyCol) {
+        this.amauntpowerDestroyCol = amauntpowerDestroyCol;
+    }
+
+    public int getAmauntpowerSee() {
+        return amauntpowerSee;
+    }
+
+    public void setAmauntpowerSee(int amauntpowerSee) {
+        this.amauntpowerSee = amauntpowerSee;
+    }
+
+
     
     
 }
