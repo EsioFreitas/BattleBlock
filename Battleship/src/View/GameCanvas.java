@@ -34,7 +34,7 @@ public class GameCanvas extends Canvas {
 		this.rows = archive.getArcWidth();
 		this.cols = archive.getArcHeight();
 		
-		setSize(AREA * cols, AREA * rows);
+		setSize(AREA * cols+10, AREA * rows);
                 
                 
                 

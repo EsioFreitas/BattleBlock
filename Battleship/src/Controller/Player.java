@@ -39,9 +39,13 @@ public class Player {
     	return remaining;
     }
     
+    public int shot(){
+        return 0;
+    }
+    
   
-    public int shot(int x, int y) {
-        return explosionMatrix[x][y];
+    public int shotBlock(int x, int y) {
+        return explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
 
     }
     public int Attention(int x, int y) {
@@ -53,26 +57,66 @@ public class Player {
     }
     
     public void powerSee(int x, int y) {
-        explosionMatrix[x][y] = 1;
+        if(archive.getPosition(explosionMatrix, x, y) == 0){
+            explosionMatrix[x][y] = 0;
+        } else
+            explosionMatrix[x][y] = 7;
+        
+        if(archive.getPosition(explosionMatrix, x+1, y) == 0){
+            explosionMatrix[x+1][y] = 0;
+        } else
+            explosionMatrix[x+1][y] = 7;
+        
+        if(archive.getPosition(explosionMatrix, x+1, y+1) == 0){
+            explosionMatrix[x+1][y+1] = 0;
+        } else
+            explosionMatrix[x+1][y+1] = 7;
+        
+        if(archive.getPosition(explosionMatrix, x, y+1) == 0){
+            explosionMatrix[x][y+1] = 0;
+        } else
+            explosionMatrix[x][y+1] = 7;
     }
     
     public void powerDestroy2x2(int x, int y) {
-        explosionMatrix[x][y] = 1;
-        explosionMatrix[x+1][y] = 1;
-        explosionMatrix[x+1][y+1] = 1;
-        explosionMatrix[x][y+1] = 1;
+        if(archive.getPosition(explosionMatrix, x, y) == 0){
+            explosionMatrix[x][y] = 6;
+        } else
+            explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
+        
+        if(archive.getPosition(explosionMatrix, x+1, y) == 0){
+            explosionMatrix[x+1][y] = 6;
+        } else
+            explosionMatrix[x+1][y] = archive.getPosition(explosionMatrix, x+1, y);
+        
+        if(archive.getPosition(explosionMatrix, x+1, y+1) == 0){
+            explosionMatrix[x+1][y+1] = 6;
+        } else
+            explosionMatrix[x+1][y+1] = archive.getPosition(explosionMatrix, x+1, y+1);
+        
+        if(archive.getPosition(explosionMatrix, x, y+1) == 0){
+            explosionMatrix[x][y+1] = 6;
+        } else
+            explosionMatrix[x][y+1] = archive.getPosition(explosionMatrix, x, y+1);
     }
     
     public void powerDestroyRow(int x, int y) {
         for(int i =0; i<canvas.getRows(); i++){
-            explosionMatrix[i][y] = 1;
-
+            if(archive.getPosition(explosionMatrix, i, y) > 0){
+                explosionMatrix[i][y] = archive.getPosition(explosionMatrix, i, y);
+            } else
+                explosionMatrix[i][y] = 6;
         }
+
+        
     }
     
     public void powerDestroyCol(int x, int y) {
         for(int j=0; j<canvas.getCols();j++){
-            explosionMatrix[x][j] = 1;
+            if(archive.getPosition(explosionMatrix, x, j) > 0){
+                explosionMatrix[x][j] = archive.getPosition(explosionMatrix, x, j);
+            } else
+                explosionMatrix[x][j] = 6;
 
         }
     }
