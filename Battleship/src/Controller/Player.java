@@ -13,6 +13,7 @@ import View.WinnerFrame;
 public class Player {
     
     private String name;
+    private int pointers; 
     private int gamePointers; 
     
     private ArcMap archive;
@@ -24,6 +25,8 @@ public class Player {
     private int[][] explosionMatrix;
     
     private int fleet;
+    
+    public static final int POINTER = 50; 
     
     public static final int DESTROY1X1 = 0;
     public static final int DESTROY2X2 = 1;
@@ -69,10 +72,12 @@ public class Player {
         }
     }
     
-    public int poiters(){
-        this.gamePointers = blocks*50;
+    public int estimatePoiters(){
+        this.gamePointers = blocks*POINTER;
         return gamePointers;
     }
+    
+    
     
     public void shot(int x, int y){
         switch(id){

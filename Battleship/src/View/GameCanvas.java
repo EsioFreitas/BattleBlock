@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.Block;
 import Model.ArcMap;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -26,6 +27,7 @@ public class GameCanvas extends Canvas {
 	private int rows;
 	private int cols;
 	private ArcMap achive;
+        private Block block;
 
 	private int[][] explosionMatrix;
 
@@ -36,7 +38,7 @@ public class GameCanvas extends Canvas {
 		
 		setSize(AREA * cols+10, AREA * rows);
                 
-                
+                Block block1 = new Block();
                 
                 
 		 setSize(rows*AREA, cols*AREA);
