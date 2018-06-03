@@ -48,6 +48,8 @@ public class GameFrame extends JFrame {
 	private int width;
 	private int hight;
         
+        private int id;
+        
 	public GameFrame(ArcMap archve) {
 		this.archive = archve;
 		
@@ -56,7 +58,7 @@ public class GameFrame extends JFrame {
 		
 		canvas = new GameCanvas(archive);
 		player = new Player(archve, canvas);
-                choosePowersPanel = new ChoosePowersPanel();
+                choosePowersPanel = new ChoosePowersPanel(player);
                 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
@@ -112,7 +114,10 @@ public class GameFrame extends JFrame {
                                 int board4;
                                 int board5;
                                 
-                                player.powerSee(x_pos, y_pos);
+                                
+                                
+                                player.shot(x_pos, y_pos);
+                                //player.powerSee(x_pos, y_pos);
                                 
 				/*if (opc > 0) {
                                     //player.Attention(x_pos, y_pos);

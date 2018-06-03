@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import Model.ArcMap;
+import View.ChoosePowersPanel;
 import View.GameCanvas;
 
 public class Player {
@@ -14,15 +15,28 @@ public class Player {
     
     private ArcMap archive;
     private GameCanvas canvas;
+    private ChoosePowersPanel choose;
+    
     private int[][] explosionMatrix;
     
     private int fleet;
     
-    public static final int DESTROY1X1 = 1;
-    public static final int DESTROY2X2 = 3;
-    public static final int DESTROYROW = 4;
-    public static final int DESTROYCOL = 4;
-    public static final int SEE2X2 = 2;
+    public static final int DESTROY1X1 = 0;
+    public static final int DESTROY2X2 = 1;
+    public static final int DESTROYROW = 2;
+    public static final int DESTROYCOL = 3;
+    public static final int SEE2X2 = 4;
+    
+    private int id = 0;
+    
+    private int amauntShots;
+    private int power;
+    private int amauntpowerDestroy2x2 = 1;
+    private int amauntpowerDestroyRow = 1;
+    private int amauntpowerDestroyCol = 1;
+    private int amauntpowerSee = 1;
+    
+     
     
     public Player(ArcMap archive, GameCanvas canvas){
       this.archive = archive;
@@ -31,21 +45,47 @@ public class Player {
       this.explosionMatrix = canvas.getExplosionMatrix();     
     }
     
-    public int weaponry(int id) {
-    	float tem = fleet*1.5f;
-    	int totalWeapon = (int)tem;
-    	
-    	int remaining = totalWeapon-id;    	
-    	return remaining;
+    public void amountShots() {
+    	float shots = fleet*1.5f;
+    	int totalWeapon = (int)shots;
+        this.amauntShots = totalWeapon;
     }
     
-    public int shot(){
-        return 0;
+    //
+    
+    public void shot(int x, int y){
+        switch(id){
+            case 0: 
+                shotBlock(x, y);
+                amauntShots -= 1;
+                break;
+            case 1:
+                powerDestroy2x2(x, y);
+                amauntpowerDestroy2x2 -= 1;
+                break;
+            case 2:
+                powerDestroyRow(x, y);
+                amauntpowerDestroyRow -= 1;
+                break;
+            case 3: 
+                powerDestroyCol(x, y);
+                amauntpowerDestroyCol-= 1;
+                break;
+            case 4: 
+                powerSee(x, y);
+                amauntpowerSee -= 1;
+                break;
+            default:
+                break;
+        }
     }
     
   
-    public int shotBlock(int x, int y) {
-        return explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
+    public void shotBlock(int x, int y) {
+        if(archive.getPosition(explosionMatrix, x, y) == 0){
+            explosionMatrix[x][y] = 6;
+        } else
+            explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
 
     }
     public int Attention(int x, int y) {
@@ -129,5 +169,14 @@ public class Player {
     public int getPointers() {
         return pointers;
     }   
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     
 }
