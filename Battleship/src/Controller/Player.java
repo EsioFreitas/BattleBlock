@@ -8,6 +8,7 @@ import Model.ArcMap;
 import View.ChoosePowersPanel;
 import View.GameCanvas;
 import View.GameFrame;
+import View.LoserFrame;
 import View.WinnerFrame;
 
 public class Player {
@@ -20,6 +21,7 @@ public class Player {
     private GameCanvas canvas;
     private ChoosePowersPanel choose;
     private GameFrame gameFrame;
+    private Game game;
 
     
     private int[][] explosionMatrix;
@@ -43,7 +45,19 @@ public class Player {
     private int amauntpowerSee = 1;
     private int weapons; 
     
+    private int contBlock1;
+    private int contBlock2;
+    private int contBlock3;
+    private int contBlock4;
+    private int contBlock5;
+    
     private int blocks;
+    
+    private Block block1 = new Block();
+    private Block block2 = new PinkBlock();
+    private Block block3 = new MagentaBlock();
+    private Block block4 = new BlackBlock();
+    private Block block5 = new  YellowBlock();
     
      
     
@@ -63,19 +77,26 @@ public class Player {
         
         return amauntShots;
     }
+    
+    public void playerScore(){
+        this.pointers = contBlock1*block1.getPoint()+contBlock2*block2.getPoint()+contBlock3*block3.getPoint()+contBlock4*block4.getPoint()+contBlock5*block5.getPoint();
+    }
     //
     public void gameOver(){
         this.weapons = amauntShots+amauntpowerDestroy2x2+amauntpowerDestroyCol+amauntpowerDestroyRow+amauntpowerSee;
         if(this.weapons <= 0){
-            gameFrame.dispose();
-            new WinnerFrame().setVisible(true);
-        }
+            
+                gameFrame.dispose();
+                new LoserFrame(this).setVisible(true);
+            }else{
+                //gameFrame.dispose();
+                //new WinnerFrame().setVisible(true);
+            }
+            
+        
     }
     
-    public int estimatePoiters(){
-        this.gamePointers = blocks*POINTER;
-        return gamePointers;
-    }
+
     
     
     
@@ -87,7 +108,6 @@ public class Player {
                     gameOver();
                 }else
                     shotBlock(x, y);
-                    
                     break;
             case 1:
                 if(amauntpowerDestroy2x2 <= 0){
@@ -107,6 +127,7 @@ public class Player {
                    gameOver(); 
                 }else
                     powerDestroyCol(x, y);
+                    
                     break;
             case 4:
                 if(amauntpowerSee <= 0){
@@ -119,7 +140,27 @@ public class Player {
         }
     }
     
-
+    public void checkPointBlock(int[][] explosionMatrix, int x, int y){
+        switch (explosionMatrix[x][y]) {
+            case 1:
+                contBlock1++;
+                break;
+            case 2:
+                contBlock2++;
+                break;
+            case 3:
+                contBlock3++;
+                break;
+            case 4:
+                contBlock4++;
+                break;
+            case 5:
+                contBlock5++;
+                break;
+            default:
+                break;
+        }
+    }
   
     public void shotBlock(int x, int y) {
         amauntShots -= 1;
@@ -127,7 +168,7 @@ public class Player {
             explosionMatrix[x][y] = 6;
         } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
-            
+            checkPointBlock(explosionMatrix, x, y);
         }
 
     }
@@ -166,23 +207,34 @@ public class Player {
         amauntpowerDestroy2x2 -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 6;
-        } else
+        } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
-        
+            checkPointBlock(explosionMatrix, x, y);
+        }
+
         if(archive.getPosition(explosionMatrix, x+1, y) == 0){
             explosionMatrix[x+1][y] = 6;
-        } else
+        } else{
             explosionMatrix[x+1][y] = archive.getPosition(explosionMatrix, x+1, y);
+            checkPointBlock(explosionMatrix, x+1, y);
+        }
+
         
         if(archive.getPosition(explosionMatrix, x+1, y+1) == 0){
             explosionMatrix[x+1][y+1] = 6;
-        } else
+        } else{
             explosionMatrix[x+1][y+1] = archive.getPosition(explosionMatrix, x+1, y+1);
+            checkPointBlock(explosionMatrix, x+1, y+1);
+        }
+
         
         if(archive.getPosition(explosionMatrix, x, y+1) == 0){
             explosionMatrix[x][y+1] = 6;
-        } else
+        } else{
             explosionMatrix[x][y+1] = archive.getPosition(explosionMatrix, x, y+1);
+            checkPointBlock(explosionMatrix, x, y+1);
+        }
+            
     }
     
     public void powerDestroyRow(int x, int y) {
@@ -313,6 +365,10 @@ public class Player {
 
     public void setAmauntpowerSee(int amauntpowerSee) {
         this.amauntpowerSee = amauntpowerSee;
+    }
+
+    public int getPointers() {
+        return pointers;
     }
 
 

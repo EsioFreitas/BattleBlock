@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
-/**
- *
- * @author esio
- */
-public class LoserFramer extends javax.swing.JFrame {
+import Controller.Player;
+import javax.swing.JLabel;
 
-    /**
-     * Creates new form LoserFramer
-     */
-    public LoserFramer() {
+public class LoserFrame extends javax.swing.JFrame {
+
+    
+    private Player player;
+    private int point;
+            
+    public LoserFrame(Player player) {
         initComponents();
+        this.point = player.getPointers();
+        
+        jLabel1.setText(""+point);
+        
+        
     }
 
     /**
@@ -28,6 +29,7 @@ public class LoserFramer extends javax.swing.JFrame {
     private void initComponents() {
 
         menuButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,21 +40,29 @@ public class LoserFramer extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("OOOOIIIIII");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(238, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(96, 96, 96))
             .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(90, 90, 90)
                 .addComponent(menuButton)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(219, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(79, 79, 79)
                 .addComponent(menuButton)
-                .addGap(52, 52, 52))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,25 +89,23 @@ public class LoserFramer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoserFramer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoserFramer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoserFramer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoserFramer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoserFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoserFramer().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton menuButton;
     // End of variables declaration//GEN-END:variables
 }

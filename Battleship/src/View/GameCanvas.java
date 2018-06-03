@@ -107,7 +107,7 @@ public class GameCanvas extends Canvas {
                                     g.fillRect(i*AREA, j*AREA, AREA,AREA);
                                     break;
                                 case 4:
-                                    g.setColor(Color.GREEN);
+                                    g.setColor(Color.black);
                                     g.fillRect(i*AREA, j*AREA, AREA,AREA);
                                     break;
                                 case 5:
