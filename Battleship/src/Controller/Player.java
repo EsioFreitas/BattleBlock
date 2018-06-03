@@ -13,7 +13,7 @@ import View.WinnerFrame;
 public class Player {
     
     private String name;
-    private int pointers; 
+    private int gamePointers; 
     
     private ArcMap archive;
     private GameCanvas canvas;
@@ -40,6 +40,8 @@ public class Player {
     private int amauntpowerSee = 1;
     private int weapons; 
     
+    private int blocks;
+    
      
     
     public Player(ArcMap archive, GameCanvas canvas, GameFrame gameFrame){
@@ -47,12 +49,14 @@ public class Player {
       this.archive = archive;
       this.fleet = archive.getArcFleet();
       this.canvas = canvas; 
-      this.explosionMatrix = canvas.getExplosionMatrix();     
+      this.explosionMatrix = canvas.getExplosionMatrix();
+      this.blocks = archive.getArcFleet();
+      
     }
     
     public int amountShots() {
     	int shots = fleet*2;
-        this.amauntShots = shots-5;
+        this.amauntShots = shots;
         
         return amauntShots;
     }
@@ -64,7 +68,11 @@ public class Player {
             new WinnerFrame().setVisible(true);
         }
     }
-    //
+    
+    public int poiters(){
+        this.gamePointers = blocks*50;
+        return gamePointers;
+    }
     
     public void shot(int x, int y){
         switch(id){
@@ -206,12 +214,12 @@ public class Player {
         this.name = name;
     }
 
-    public int getPointers() {
-        return pointers;
+    public int getGamePointers() {
+        return gamePointers;
     }
 
-    public void setPointers(int pointers) {
-        this.pointers = pointers;
+    public void setGamePointers(int gamePointers) {
+        this.gamePointers = gamePointers;
     }
 
     public ArcMap getArchive() {

@@ -44,7 +44,6 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     public ChoosePowersPanel(Player player) {
         
         this.player = player;
-        this.pointers = player.getPointers();
         this.name = player.getName();
         amauntShots = player.amountShots();
         amauntpowerDestroy2x2 = player.getAmauntpowerDestroy2x2();
