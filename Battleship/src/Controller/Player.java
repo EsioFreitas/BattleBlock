@@ -56,31 +56,31 @@ public class Player {
     public void shot(int x, int y){
         switch(id){
             case 0: 
-                if(amauntShots == 0){
-                    
+                if(amauntShots <= 0){
+                    System.out.println("ddddd");
                 }else
                     shotBlock(x, y);
                     break;
             case 1:
-                if(amauntpowerDestroy2x2 == 0){
+                if(amauntpowerDestroy2x2 <= 0){
                     System.out.println("doooooont");
                 }else 
                     powerDestroy2x2(x, y);
                     break;
             case 2:
-                if(amauntpowerDestroyRow ==0){
+                if(amauntpowerDestroyRow <=0){
                     
                 }else
                     powerDestroyRow(x, y);
                     break;
             case 3: 
-                if(amauntpowerDestroyCol ==0){
+                if(amauntpowerDestroyCol <=0){
                     
                 }else
                     powerDestroyCol(x, y);
                     break;
             case 4:
-                if(amauntpowerSee == 0){
+                if(amauntpowerSee <= 0){
                     
                 }else
                     powerSee(x, y);

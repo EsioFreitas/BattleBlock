@@ -116,7 +116,7 @@ public class GameFrame extends JFrame {
                                 
                                 
                                 
-                                player.shot(x_pos, y_pos);
+                               player.shot(x_pos, y_pos);
                                choosePowersPanel.loadLabel(player.getId());
                                 
                                 //player.powerSee(x_pos, y_pos);
