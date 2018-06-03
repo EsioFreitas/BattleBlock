@@ -90,13 +90,20 @@ public class Player {
         }
     }
     
+    public int playerPoints(){
+        
+        return 0;
+    }
+    
   
     public void shotBlock(int x, int y) {
         amauntShots -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 6;
-        } else
+        } else{
             explosionMatrix[x][y] = archive.getPosition(explosionMatrix, x, y);
+            playerPoints();
+        }
 
     }
     public int Attention(int x, int y) {

@@ -1,5 +1,6 @@
 package View;
 
+import Controller.Game;
 import Controller.Player;
 import java.awt.Button;
 import java.awt.GridBagLayout;
@@ -27,7 +28,8 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     private Player player;
     
     private String nome; 
-    private int pointers; 
+    private int pointers;
+    private Game game;
     
     private int id = 0;
     
@@ -153,12 +155,17 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
                 default:
                     break;
             }
-            
-            
-            
-            
-            
+      
     }
+        
+    public void andGame(int andGame){
+        if(amauntShots <= 0 && amauntpowerDestroy2x2 <= 0 && amauntpowerDestroyCol<=0 && amauntpowerDestroyRow <=0 && amauntpowerSee <= 0){
+            andGame = Game.GAMEOVER;
+            game.status(andGame);
+        }
+    }
+    
+
 
     public void setId(int id) {
         this.id = id;
