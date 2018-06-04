@@ -19,7 +19,8 @@ public class RulesFrame extends javax.swing.JFrame {
         setTitle("Rules");
         setResizable(false);
         setLocationRelativeTo(null);
-        nameTextField.setToolTipText("Your nickname must have 5 characters");
+        nameTextField.setToolTipText("Your nickname must have 4 to 6 characters");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -91,8 +92,8 @@ public class RulesFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 142, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("URW Gothic L", 0, 15)); // NOI18N
-        jLabel2.setText("Your nickname must have 5 characters");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 196, -1, -1));
+        jLabel2.setText("Your nickname must have 4 to 6 characters.");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 196, 320, -1));
 
         jPanel41.setBackground(new java.awt.Color(189, 13, 185));
 
@@ -472,7 +473,7 @@ public class RulesFrame extends javax.swing.JFrame {
         if (name.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "You need a nickname", "Erro de validação", JOptionPane.ERROR_MESSAGE);
 
-        } else if (name.length() > 5 || name.length() < 5) {
+        } else if (name.length() > 6 || name.length() < 4) {
             JOptionPane.showMessageDialog(this, "Your nickname is invalid", "Erro de validação", JOptionPane.ERROR_MESSAGE);
         } else {
             JFileChooser fc = new JFileChooser();

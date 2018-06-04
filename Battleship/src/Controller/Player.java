@@ -49,7 +49,7 @@ public class Player {
     private Block block1 = new Block();
     private Block block2 = new PinkBlock();
     private Block block3 = new MagentaBlock();
-    private Block block4 = new BlackBlock();
+    private Block block4 = new GreenBlock();
     private Block block5 = new YellowBlock();
 
     public Player(ArcMap archive, GameCanvas canvas, GameFrame gameFrame) {
@@ -63,7 +63,7 @@ public class Player {
     }
 
     public int amountShots() {
-        int shots = fleet * 2;
+        int shots = fleet * 3;
         this.amauntShots = shots;
 
         return amauntShots;
@@ -265,6 +265,9 @@ public class Player {
 
             }
 
+        } else if (amoutBlokcs >= archive.getArcAmountBlocks()) {
+            gameFrame.dispose();
+            new WinnerFrame(gameFrame.getDatePlayer()).setVisible(true);
         }
 
     }

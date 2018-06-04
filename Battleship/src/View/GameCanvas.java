@@ -42,23 +42,23 @@ public class GameCanvas extends Canvas {
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 1:
-                        g.setColor(Color.WHITE);
+                        g.setColor(new Color(255,50,37));
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 2:
-                        g.setColor(Color.PINK);
+                        g.setColor(new Color(251,117,226));
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 3:
-                        g.setColor(Color.magenta);
+                        g.setColor(new Color(189,13,185));
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 4:
-                        g.setColor(Color.black);
+                        g.setColor(new Color(62,255,0));
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 5:
-                        g.setColor(Color.YELLOW);
+                        g.setColor(new Color(255,249,0));
                         g.fillRect(i * AREA, j * AREA, AREA, AREA);
                         break;
                     case 6:

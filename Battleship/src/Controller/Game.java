@@ -7,7 +7,7 @@ public class Game {
     private Block block1 = new Block();
     private Block block2 = new PinkBlock();
     private Block block3 = new MagentaBlock();
-    private Block block4 = new BlackBlock();
+    private Block block4 = new GreenBlock();
     private Block block5 = new YellowBlock();
 
     private int scoreGame;
