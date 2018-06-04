@@ -74,7 +74,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        new RuleJFrame().setVisible(true);
+        new RulesFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_playButtonActionPerformed
 

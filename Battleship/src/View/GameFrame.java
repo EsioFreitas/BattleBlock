@@ -58,7 +58,7 @@ public class GameFrame extends JFrame {
 		
 		canvas = new GameCanvas(archive);
 		player = new Player(archve, canvas, this);
-                choosePowersPanel = new ChoosePowersPanel(player);
+                choosePowersPanel = new ChoosePowersPanel(player, this);
                 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
@@ -105,6 +105,8 @@ public class GameFrame extends JFrame {
                                 int board3;
                                 int board4;
                                 int board5;
+                                
+                               
                                 
                                 
                                 

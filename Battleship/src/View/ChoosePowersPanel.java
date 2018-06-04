@@ -19,12 +19,14 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     JButton powerDestroyRowButton = new JButton("Destroy Row");
     JButton powerDestroyColButton = new JButton("Destroy Col");
     JButton powerSeeButton = new JButton("See 2x2");
+    JButton backButton = new JButton("Back");
 
     JLabel shotLabel = new JLabel();
     JLabel powerDestroy2x2Label = new JLabel();
     JLabel powerDestroyRowLabel = new JLabel();
     JLabel powerDestroyColLabel = new JLabel();
     JLabel powerSeeLabel = new JLabel();
+    JLabel whiteLabel = new JLabel();
     
     private Player player;
     
@@ -39,10 +41,11 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
     private int amauntpowerDestroyCol;
     private int amauntpowerSee;
     
-    
+    private int pointer; 
+    private GameFrame gameFrame;
 
-    public ChoosePowersPanel(Player player) {
-        
+    public ChoosePowersPanel(Player player, GameFrame gameFrame) {
+        this.gameFrame = gameFrame;
         this.player = player;
         this.name = player.getName();
         amauntShots = player.amountShots();
@@ -51,11 +54,15 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
         amauntpowerDestroyCol = player.getAmauntpowerDestroyCol();
         amauntpowerSee = player.getAmauntpowerSee();
         
-        setLayout(new GridLayout(5, 2));
+        setLayout(new GridLayout(6, 2));
 
         add(shotLabel);
         add(shotButton);
         shotButton.addActionListener(this);
+        
+        add(powerSeeLabel);
+        add(powerSeeButton);
+        powerSeeButton.addActionListener(this);
 
         add(powerDestroy2x2Label);
         add(powerDestroy2x2Button);
@@ -69,10 +76,13 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
         add(powerDestroyColLabel);
         add(powerDestroyColButton);
         powerDestroyColButton.addActionListener(this);
+        
+        add(whiteLabel);
+        add(backButton);
+        backButton.addActionListener(this);
+        
 
-        add(powerSeeLabel);
-        add(powerSeeButton);
-        powerSeeButton.addActionListener(this);
+        
         
        /*JLabel text = new JLabel(player.getName()+", your core is: "+player.getPointers());
            
@@ -89,6 +99,7 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
         powerDestroyColLabel.setText("You have: "+amauntpowerDestroyCol);
         powerDestroyRowLabel.setText("You have: "+amauntpowerDestroyRow);
         powerSeeLabel.setText("You have: "+amauntpowerSee);
+        whiteLabel.setText("");
     }
     
     
@@ -109,9 +120,18 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
             player.setId(player.DESTROYCOL);
         }else if(e.getSource() == powerSeeButton){
             player.setId(player.SEE2X2);
+        }else if(e.getSource() == backButton){
+            backButtonActionPerformed(e);
         }
     }
     
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        new RulesFrame().setVisible(true);
+        gameFrame.dispose();
+         
+    }
+    
+
         public void loadLabel(int id){
             
             switch(id){

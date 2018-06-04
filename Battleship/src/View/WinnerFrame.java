@@ -5,6 +5,9 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+
 /**
  *
  * @author esio
@@ -16,6 +19,11 @@ public class WinnerFrame extends javax.swing.JFrame {
      */
     public WinnerFrame() {
         initComponents();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(new BorderLayout());
+		setTitle("Won");
+		setResizable(false);
+                setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +40,11 @@ public class WinnerFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuButton.setText("Menu");
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,6 +65,10 @@ public class WinnerFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments

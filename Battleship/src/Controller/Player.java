@@ -149,7 +149,8 @@ public class Player {
         amauntpowerSee -= 1;
         if(archive.getPosition(explosionMatrix, x, y) == 0){
             explosionMatrix[x][y] = 0;
-        } else
+        } 
+        else
             explosionMatrix[x][y] = 7;
         
         if(archive.getPosition(explosionMatrix, x+1, y) == 0){
@@ -240,46 +241,36 @@ public class Player {
     //Não esta impedido de contabilizar o contator. vc clica e ele continua contando
     public void checkPointBlock(int[][] explosionMatrix, int x, int y){
         
-        int [][] tem = new int[archive.getArcWidth()][archive.getArcHeight()];
-        tem[x][y] = 1;
-        if(tem[x][y] == 1){
-            tem[x][y] = 2;
+        
+        
+            
             switch (explosionMatrix[x][y]) {
                 
                 case 1:
                     pointers += block1.getPoint();
-                    tem[x][y] = 2;
                     System.out.println(pointers);
                     break;
                 case 2:
                     pointers += block2.getPoint();
-                    tem[x][y] = 2;
                     System.out.println(pointers);
                     break;
                 case 3:
                     pointers += block3.getPoint();
-                    tem[x][y] = 2;
                     System.out.println(pointers);
                     break;
                 case 4:
                     pointers += block4.getPoint();
-                    tem[x][y] = 2;
                     System.out.println(pointers);
                     break;
                 case 5:
                     pointers += block5.getPoint();
-                    tem[x][y] =2;
                     System.out.println(pointers);
                     break;
                 default:
-                    tem[x][y] = 2;
                     break;
             }
-                        tem[x][y] = 2;
 
-        } 
-        
-        tem[x][y] = 2;
+                
         
     }
 
