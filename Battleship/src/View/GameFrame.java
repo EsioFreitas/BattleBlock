@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 
 import Controller.Thread.CanvasThread;
 import Controller.Player;
+import Model.DatePlayer;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -47,11 +48,13 @@ public class GameFrame extends JFrame {
         
 	private int width;
 	private int hight;
+        private DatePlayer datePlayer; 
         
         private int id;
         
-	public GameFrame(ArcMap archve) {
+	public GameFrame(ArcMap archve, DatePlayer datePlayer) {
 		this.archive = archve;
+                this.datePlayer = datePlayer;
 		
 		this.width = archve.getArcWidth();
 		this.hight = archive.getArcHeight();
@@ -172,6 +175,10 @@ public class GameFrame extends JFrame {
 
 		});
 	}
+
+    public DatePlayer getDatePlayer() {
+        return datePlayer;
+    }
 	
 	
 

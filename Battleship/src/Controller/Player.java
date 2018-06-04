@@ -275,15 +275,17 @@ public class Player {
     }
 
         public void gameOver(){
+        
         this.weapons = amauntShots+amauntpowerDestroy2x2+amauntpowerDestroyCol+amauntpowerDestroyRow+amauntpowerSee;
+        gameFrame.getDatePlayer().setPointers(pointers);
         if(this.weapons <= 0){
             if(amoutBlokcs>=archive.getArcAmountBlocks()){
                 gameFrame.dispose();
-                new WinnerFrame().setVisible(true);
+                new WinnerFrame(gameFrame.getDatePlayer()).setVisible(true);
                 
             }else{
                 gameFrame.dispose();
-                new LoserFrame(this).setVisible(true);
+                new LoserFrame(gameFrame.getDatePlayer()).setVisible(true);
                 
             }
                 

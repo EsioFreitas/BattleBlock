@@ -31,6 +31,7 @@ public class RulesFrame extends javax.swing.JFrame {
 		setTitle("Rules");
 		setResizable(false);
                 setLocationRelativeTo(null);
+                nameTextField.setToolTipText("Your nickname must have 5 characters");
     }
 
     /**
@@ -46,6 +47,7 @@ public class RulesFrame extends javax.swing.JFrame {
         mapButton = new javax.swing.JButton();
         nameTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +73,8 @@ public class RulesFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Your nickname");
 
+        jLabel2.setText("Your nickname must have 5 characters");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,9 +88,14 @@ public class RulesFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(145, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,7 +104,9 @@ public class RulesFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(mapButton))
@@ -118,9 +129,11 @@ public class RulesFrame extends javax.swing.JFrame {
             System.out.println(datePlayer.getNickname());
             String t = "";
             
-            if( name.trim().equals("")  ){
+            if( name.trim().equals("")){
                               JOptionPane.showMessageDialog(this, "You need a nickname", "Erro de validação", JOptionPane.ERROR_MESSAGE);
 
+            }else if(name.length()> 5 || name.length() <5){
+                JOptionPane.showMessageDialog(this, "Your nickname is invalid", "Erro de validação", JOptionPane.ERROR_MESSAGE);
             }else {
                 JFileChooser fc = new JFileChooser();
                 fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -132,7 +145,7 @@ public class RulesFrame extends javax.swing.JFrame {
             
         try {
             ArcMap archive = new ArcMap(path);
-                new GameFrame(archive).setVisible(true);
+                new GameFrame(archive, datePlayer).setVisible(true);
             this.dispose();  
 
             
@@ -151,7 +164,7 @@ public class RulesFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_mapButtonActionPerformed
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
-        
+        nameTextField.setText("");
     }//GEN-LAST:event_nameTextFieldActionPerformed
 
     /**
@@ -192,6 +205,7 @@ public class RulesFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton mapButton;
     private javax.swing.JTextField nameTextField;
     // End of variables declaration//GEN-END:variables
