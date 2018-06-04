@@ -1,4 +1,3 @@
-
 package Model;
 
 import java.io.File;
@@ -6,158 +5,154 @@ import java.util.Scanner;
 
 public class ArcMap {
 
-	private int arcWidth;
-	private int arcHeight;
+    private int arcWidth;
+    private int arcHeight;
 
-	private String arcTemporatyMatrix = "";
-	private int[][] arcMatrix;
+    private String arcTemporatyMatrix = "";
+    private int[][] arcMatrix;
 
-	private int arcFirstShip;
-	private int arcSecondShip;
-	private int arcThirdShip;
-	private int arcFourthShip;
-	private int arcFivethShip;
-	private int arcFleet;
-        private int arcAmountBlocks;
+    private int arcFirstShip;
+    private int arcSecondShip;
+    private int arcThirdShip;
+    private int arcFourthShip;
+    private int arcFivethShip;
+    private int arcFleet;
+    private int arcAmountBlocks;
 
+    private int var;
+    private int cont;
+    private int lenth;
+    private String[] content;
 
-	private int var;
-	private int cont;
-	private int lenth;
-	private String[] content;
+    public ArcMap(String path) throws Exception {
 
-	public ArcMap(String path) throws Exception {
+        Scanner reader = new Scanner(new File(path));
 
-		Scanner reader = new Scanner(new File(path));
+        String row = reader.nextLine();
 
-		String row = reader.nextLine();
+        //Pegando as dimenções
+        row = reader.nextLine();
 
-		//Pegando as dimenções
-		row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[0]);
+        arcWidth = var;
+        var = Integer.parseInt(content[1]);
+        arcHeight = var;
 
-		content = row.split(" ");
-		var = Integer.parseInt(content[0]);
-		arcWidth = var;
-		var = Integer.parseInt(content[1]);
-		arcHeight = var;
+        row = reader.nextLine();
+        row = reader.nextLine();
 
-		row = reader.nextLine();
-		row = reader.nextLine();
+        //Pegando a matriz da imagem e jogando em uma string
+        for (int i = 0; i < arcHeight; i++) {
+            row = reader.nextLine();
+            arcTemporatyMatrix += row;
+        }
 
-		//Pegando a matriz da imagem e jogando em uma string
-		for (int i = 0; i < arcHeight; i++) {
-			row = reader.nextLine();
-			arcTemporatyMatrix += row;
-		}
+        lenth = arcHeight * arcWidth;
+        int[] numbers = new int[lenth];
 
-		lenth = arcHeight * arcWidth;
-		int[] numbers = new int[lenth];
+        //Transformando a string em vetor de Int
+        for (int i = 0; i < lenth; i++) {
+            numbers[i] = Integer.parseInt(arcTemporatyMatrix.substring(i, i + 1));
+        }
 
-		//Transformando a string em vetor de Int
-		for (int i = 0; i < lenth; i++) {
-			numbers[i] = Integer.parseInt(arcTemporatyMatrix.substring(i, i + 1));
-		}
+        arcMatrix = new int[arcHeight][arcWidth];
 
-		arcMatrix = new int[arcHeight][arcWidth];
+        //Transformando o vector em uma matriz
+        for (int i = 0; i < arcHeight; i++) {
+            for (int j = 0; j < arcWidth; j++) {
+                arcMatrix[i][j] = numbers[cont];
+                cont++;
+            }
+        }
 
-		//Transformando o vector em uma matriz
-		for (int i = 0; i < arcHeight; i++) {
-			for (int j = 0; j < arcWidth; j++) {
-				arcMatrix[i][j] = numbers[cont];
-				cont++;
-			}
-		}
+        //Pegando numero dos barcos
+        row = reader.nextLine();
+        row = reader.nextLine();
 
-		//Pegando numero dos barcos
-		row = reader.nextLine();
-		row = reader.nextLine();
+        row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[1]);
+        arcFirstShip = var;
 
-		row = reader.nextLine();
-		content = row.split(" ");
-		var = Integer.parseInt(content[1]);
-		arcFirstShip = var;
+        row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[1]);
+        arcSecondShip = var;
 
-		row = reader.nextLine();
-		content = row.split(" ");
-		var = Integer.parseInt(content[1]);
-		arcSecondShip = var;
+        row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[1]);
+        arcThirdShip = var;
 
-		row = reader.nextLine();
-		content = row.split(" ");
-		var = Integer.parseInt(content[1]);
-		arcThirdShip = var;
+        row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[1]);
+        arcFourthShip = var;
 
-		row = reader.nextLine();
-		content = row.split(" ");
-		var = Integer.parseInt(content[1]);
-		arcFourthShip = var;
+        row = reader.nextLine();
+        content = row.split(" ");
+        var = Integer.parseInt(content[1]);
+        arcFivethShip = var;
 
-		row = reader.nextLine();
-		content = row.split(" ");
-		var = Integer.parseInt(content[1]);
-		arcFivethShip = var;
-		
-		arcFleet = getArcFirstShip()+getArcSecondShip()+getArcThirdShip()+getArcFourthShip()+getArcFivethShip();
-		System.out.println(arcFleet+"eeeeeeeeeeeeee'");
-                
-                
-                ;
-		for (int i = 0; i < arcHeight; i++) {
-			for (int j = 0; j < arcWidth; j++) {
-                            if(arcMatrix[i][j] == 1 ||arcMatrix[i][j] == 2 ||arcMatrix[i][j] == 3 ||arcMatrix[i][j] == 4 ||arcMatrix[i][j] == 5 ){
-                                arcAmountBlocks++;
-                            }
-			}
-			System.out.println(arcAmountBlocks+"ee");
-		}
-	}
-	//mudei aqui 
-	public int getPosition(int[][] matrix, int x, int y) {
-		matrix[x][y] = arcMatrix[y][x];
-		return matrix[x][y];
+        arcFleet = getArcFirstShip() + getArcSecondShip() + getArcThirdShip() + getArcFourthShip() + getArcFivethShip();
+        System.out.println(arcFleet + "eeeeeeeeeeeeee'");
+        ;
+        for (int i = 0; i < arcHeight; i++) {
+            for (int j = 0; j < arcWidth; j++) {
+                if (arcMatrix[i][j] == 1 || arcMatrix[i][j] == 2 || arcMatrix[i][j] == 3 || arcMatrix[i][j] == 4 || arcMatrix[i][j] == 5) {
+                    arcAmountBlocks++;
+                }
+            }
+            System.out.println(arcAmountBlocks + "ee");
+        }
+    }
+    //mudei aqui 
 
-	}
+    public int getPosition(int[][] matrix, int x, int y) {
+        matrix[x][y] = arcMatrix[y][x];
+        return matrix[x][y];
 
-	public int getArcFirstShip() {
-		return arcFirstShip;
-	}
+    }
 
-	public int getArcFleet() {
-		return arcFleet;
-	}
+    public int getArcFirstShip() {
+        return arcFirstShip;
+    }
 
-	public int getArcSecondShip() {
-		return arcSecondShip;
-	}
+    public int getArcFleet() {
+        return arcFleet;
+    }
 
-	public int getArcThirdShip() {
-		return arcThirdShip;
-	}
+    public int getArcSecondShip() {
+        return arcSecondShip;
+    }
 
-	public int getArcFourthShip() {
-		return arcFourthShip;
-	}
+    public int getArcThirdShip() {
+        return arcThirdShip;
+    }
 
-	public int getArcFivethShip() {
-		return arcFivethShip;
-	}
+    public int getArcFourthShip() {
+        return arcFourthShip;
+    }
 
-	public int getArcWidth() {
-		return arcWidth;
-	}
+    public int getArcFivethShip() {
+        return arcFivethShip;
+    }
 
-	public int getArcHeight() {
-		return arcHeight;
-	}
+    public int getArcWidth() {
+        return arcWidth;
+    }
 
-	public int[][] getArcMatrix() {
-		return arcMatrix;
-	}
+    public int getArcHeight() {
+        return arcHeight;
+    }
+
+    public int[][] getArcMatrix() {
+        return arcMatrix;
+    }
 
     public int getArcAmountBlocks() {
         return arcAmountBlocks;
     }
-
-	
 
 }

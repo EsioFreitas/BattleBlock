@@ -1,9 +1,8 @@
-
 package Model;
 
 public class DatePlayer {
-    
-    private int pointers; 
+
+    private int pointers;
     private String nickname;
 
     public int getPointers() {
@@ -21,6 +20,5 @@ public class DatePlayer {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
-    
-    
+
 }
