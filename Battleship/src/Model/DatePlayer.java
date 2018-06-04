@@ -10,7 +10,10 @@ public class DatePlayer {
     }
 
     public void setPointers(int pointers) {
-        this.pointers = pointers;
+        if(pointers >= 0){
+            this.pointers = pointers;
+        }
+        
     }
 
     public String getNickname() {
@@ -18,7 +21,10 @@ public class DatePlayer {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        if(nickname != ""){
+            this.nickname = nickname;
+        }
+        
     }
 
 }
