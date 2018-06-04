@@ -1,6 +1,8 @@
 package View;
 
 import Model.DatePlayer;
+import Controller.RankManeger;
+import Controller.RegisterRank;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -434,6 +436,11 @@ public class WinnerFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        DatePlayer d = this.datePlayer;
+        RegisterRank register = new RegisterRank();
+        register.registerPlayer(d);
+        
+        
         new MainJFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed

@@ -1,6 +1,7 @@
 package View;
 
 import Model.DatePlayer;
+import Controller.RankManeger;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -565,6 +566,7 @@ public class LoserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        RankManeger.getInstance().registreRank(datePlayer);
         new MainJFrame().setVisible(true);
         this.dispose();
 

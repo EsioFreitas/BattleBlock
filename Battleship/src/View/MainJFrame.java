@@ -534,7 +534,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void rankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rankButtonActionPerformed
-        new RankJFrame().setVisible(true);
+        new RankFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_rankButtonActionPerformed
 
