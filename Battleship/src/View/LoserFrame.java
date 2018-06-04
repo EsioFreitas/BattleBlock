@@ -120,7 +120,7 @@ public class LoserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
-        new MainFrame().setVisible(true);
+        new MainJFrame().setVisible(true);
         this.dispose();
 
         menuButton.setBackground(new Color(250, 0, 0));

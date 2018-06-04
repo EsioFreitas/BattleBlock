@@ -1,11 +1,11 @@
 package Controller;
 
-import View.MainFrame;
+import View.MainJFrame;
 
 public class Main {
 
     public static void main(String[] args) {
-        new MainFrame().setVisible(true);
+        new MainJFrame().setVisible(true);
 
     }
 
