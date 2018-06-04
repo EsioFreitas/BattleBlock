@@ -1,18 +1,16 @@
-
 package Controller;
 
-public class PinkBlock extends Block{
-    
-            public static final int amaunt = 2;
+public class PinkBlock extends Block {
 
-    
-   private int point; 
-        
-        public PinkBlock(){
-            this.point = 30; 
-        }
+    public static final int amaunt = 2;
 
-   @Override
+    private int point;
+
+    public PinkBlock() {
+        this.point = 30;
+    }
+
+    @Override
     public int getPoint() {
         return point;
     }

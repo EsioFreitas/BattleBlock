@@ -27,11 +27,11 @@ public class RulesFrame extends javax.swing.JFrame {
     public RulesFrame() {
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		getContentPane().setLayout(new BorderLayout());
-		setTitle("Rules");
-		setResizable(false);
-                setLocationRelativeTo(null);
-                nameTextField.setToolTipText("Your nickname must have 5 characters");
+        getContentPane().setLayout(new BorderLayout());
+        setTitle("Rules");
+        setResizable(false);
+        setLocationRelativeTo(null);
+        nameTextField.setToolTipText("Your nickname must have 5 characters");
     }
 
     /**
@@ -117,50 +117,42 @@ public class RulesFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-         new MainFrame().setVisible(true);
+        new MainFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void mapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapButtonActionPerformed
-            
-            DatePlayer datePlayer = new DatePlayer();
-            String name = nameTextField.getText(); 
-            datePlayer.setNickname(name);
-            System.out.println(datePlayer.getNickname());
-            String t = "";
-            
-            if( name.trim().equals("")){
-                              JOptionPane.showMessageDialog(this, "You need a nickname", "Erro de validação", JOptionPane.ERROR_MESSAGE);
 
-            }else if(name.length()> 5 || name.length() <5){
-                JOptionPane.showMessageDialog(this, "Your nickname is invalid", "Erro de validação", JOptionPane.ERROR_MESSAGE);
-            }else {
-                JFileChooser fc = new JFileChooser();
-                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-                fc.showOpenDialog(this);
+        DatePlayer datePlayer = new DatePlayer();
+        String name = nameTextField.getText();
+        datePlayer.setNickname(name);
+        System.out.println(datePlayer.getNickname());
+        String t = "";
+
+        if (name.trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "You need a nickname", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+
+        } else if (name.length() > 5 || name.length() < 5) {
+            JOptionPane.showMessageDialog(this, "Your nickname is invalid", "Erro de validação", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JFileChooser fc = new JFileChooser();
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fc.showOpenDialog(this);
 
             File map = fc.getSelectedFile();
             String path = map.getPath();
-            
-            
-        try {
-            ArcMap archive = new ArcMap(path);
-                new GameFrame(archive, datePlayer).setVisible(true);
-            this.dispose();  
 
-            
-            
-           
-        
-        } catch (Exception ex) {
-            Logger.getLogger(RuleJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+            try {
+                ArcMap archive = new ArcMap(path);
+                new GameFrame(archive, datePlayer).setVisible(true);
+                this.dispose();
+
+            } catch (Exception ex) {
+                Logger.getLogger(RulesFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-            
-            
-               
-    
+        }
+
+
     }//GEN-LAST:event_mapButtonActionPerformed
 
     private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
