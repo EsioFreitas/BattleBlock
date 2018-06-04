@@ -73,7 +73,6 @@ public class Player {
         switch (id) {
             case 0:
                 if (amauntShots <= 0) {
-                    System.out.println("ddddd");
                     gameOver();
                 } else {
                     shotBlock(x, y);
@@ -81,7 +80,6 @@ public class Player {
                 break;
             case 1:
                 if (amauntpowerDestroy2x2 <= 0) {
-                    System.out.println("doooooont");
                     gameOver();
                 } else {
                     powerDestroy2x2(x, y);
@@ -233,23 +231,18 @@ public class Player {
 
             case 1:
                 pointers += block1.getPoint();
-                System.out.println(pointers);
                 break;
             case 2:
                 pointers += block2.getPoint();
-                System.out.println(pointers);
                 break;
             case 3:
                 pointers += block3.getPoint();
-                System.out.println(pointers);
                 break;
             case 4:
                 pointers += block4.getPoint();
-                System.out.println(pointers);
                 break;
             case 5:
                 pointers += block5.getPoint();
-                System.out.println(pointers);
                 break;
             default:
                 break;

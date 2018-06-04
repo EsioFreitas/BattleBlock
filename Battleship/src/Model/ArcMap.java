@@ -96,15 +96,13 @@ public class ArcMap {
         arcFivethShip = var;
 
         arcFleet = getArcFirstShip() + getArcSecondShip() + getArcThirdShip() + getArcFourthShip() + getArcFivethShip();
-        System.out.println(arcFleet + "eeeeeeeeeeeeee'");
-        ;
+
         for (int i = 0; i < arcHeight; i++) {
             for (int j = 0; j < arcWidth; j++) {
                 if (arcMatrix[i][j] == 1 || arcMatrix[i][j] == 2 || arcMatrix[i][j] == 3 || arcMatrix[i][j] == 4 || arcMatrix[i][j] == 5) {
                     arcAmountBlocks++;
                 }
             }
-            System.out.println(arcAmountBlocks + "ee");
         }
     }
     //mudei aqui 
