@@ -42,6 +42,7 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
         setTitle("Stellar Battle");
+        setUndecorated(true);
         setResizable(false);
         if (width < 10) {
             setSize(150 + AREA * width, canvas.AREA * hight);

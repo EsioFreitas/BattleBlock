@@ -1,6 +1,7 @@
 package View;
 
 import Controller.Player;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,7 +50,14 @@ public class ChoosePowersPanel extends JPanel implements ActionListener {
         amauntpowerDestroyRow = player.getAmauntpowerDestroyRow();
         amauntpowerDestroyCol = player.getAmauntpowerDestroyCol();
         amauntpowerSee = player.getAmauntpowerSee();
-
+        //
+       shotButton.setFont(new java.awt.Font("URW Gothic L", 0, 15));
+       powerDestroy2x2Button.setFont(new java.awt.Font("URW Gothic L", 0, 15));
+       powerDestroyColButton.setFont(new java.awt.Font("URW Gothic L", 0, 15));
+       powerDestroyRowButton.setFont(new java.awt.Font("URW Gothic L", 0, 15));
+       powerSeeButton.setFont(new java.awt.Font("URW Gothic L", 0, 15));
+       backButton.setFont(new java.awt.Font("URW Gothic L", 1, 15));
+       
         setLayout(new GridLayout(6, 2));
 
         add(shotLabel);
